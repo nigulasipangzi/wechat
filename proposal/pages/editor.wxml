@@ -25,42 +25,33 @@
       <text class="card-title-text text12">投保计划</text>
     </view>
     <view class="card-content">
-      <view class="{{v.parent == null ? 'product-main' : 'product-rider'}} text12" wx:for="{{plan.product}}" wx:key="unique" wx:for-item="v">
-        <view style="width:50rpx"></view>
-        <view style="width:200rpx">
-          <text>{{v.abbrName}}</text>
-        </view>
-        <view style="width:250rpx; display:flex;">
-          <view style="width:60rpx; margin:20rpx 10rpx 0 0;">
-            <view class="circle">
-              <text>保</text>
+      <block wx:for="{{plan.product}}" wx:key="unique" wx:for-item="v">
+        <view class="product-main text12" wx:if="{{v.parent == null}}">
+          <view style="width:100%; height:80rpx; display:flex; line-height:80rpx">
+            <image style="width:60rpx; height:60rpx; margin:10rpx;" src="https://sv-uat.iyb.tm/images/logo/fosun1.jpg"></image>
+            <view>
+              <text style="line-height:80rpx;">{{v.name}}</text>
             </view>
           </view>
-          <view style="width:180rpx; height:100%;">
-            <view style="height:50%">
-              <text>{{v.purchase}}</text>
-            </view>
-            <view style="height:50%">
-              <text>{{v.insure}}</text>
-            </view>
+          <view style="width:100%; height:80rpx; display:flex;">
+            <view style="width:60rpx; margin:10rpx; text-align:center;"></view>
+            <text>{{v.purchase}} / {{v.insure}} / {{v.pay}} / {{v.premium}}</text>
           </view>
         </view>
-        <view style="width:250rpx; display:flex;">
-          <view style="width:60rpx; margin:20rpx 10rpx 0 0;">
-            <view class="circle">
-              <text>交</text>
-            </view>
+        <view class="product-rider text12" style="line-height:80rpx" wx:else>
+          <view style="width:60rpx; margin: 0 10rpx 0 10rpx; text-align:center;">
+            <text style="color:#0a0;">附</text>
           </view>
-          <view style="width:180rpx; height:100%;">
-            <view style="height:50%">
-              <text>{{v.pay}}</text>
-            </view>
-            <view style="height:50%">
-              <text>{{v.premium}}</text>
-            </view>
+          <view style="width:370rpx;">
+            <text style="color:#000; margin-right:10rpx;">{{v.abbrName}}</text>
+            <text style="color:#aaa">{{v.purchase}} / {{v.insure}}</text>
+          </view>
+          <view style="width:300rpx; text-align:right;">
+            <text style="color:#fff; border-radius:20rpx; background-color:#f00; padding:0 10rpx 0 10rpx; line-height:40rpx;">{{v.pay}}</text>
+            <text style="color:#000">{{v.premium}}元</text>
           </view>
         </view>
-      </view>
+      </block>
       <button bindtap="getOpenIdTap">添加产品</button>
     </view>
   </view>

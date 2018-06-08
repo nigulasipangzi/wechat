@@ -85,8 +85,7 @@
 }
 
 .product-main {
-  display: flex;
-  height: 120rpx;
+  height: 140rpx;
   line-height: 60rpx;
   background-color: #fff;
   margin-bottom: 1px;
@@ -94,7 +93,7 @@
 
 .product-rider {
   display: flex;
-  height: 100rpx;
+  height: 80rpx;
   line-height: 50rpx;
   background-color: #fff;
   margin-bottom: 1px;
