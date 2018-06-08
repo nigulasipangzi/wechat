@@ -1,6 +1,33 @@
-//app.js
+import { Proposal } from './utils/proposal.js'
+
 App({
+  host: {
+    address: "https://api-test.iyb.tm/wx",
+    // address: "http://www.lerrain.com:7666/wx",
+    program: "proposal",
+  },
   onLaunch: function () {
+    this.host.req = (uri, param, onSucc, onFail) => {
+      if (param == null)
+        param = {}
+      param.userKey = this.host.userKey
+      param.program = this.host.program
+      wx.request({
+        url: this.host.address + uri,
+        data: param,
+        method: 'POST',
+        success: function (res) {
+          console.log(param)
+          console.log(res.data)
+          if (res.data.result == "success") {
+            onSucc(res.data.content)
+          } else if (onFail) {
+            onFail(res.reason)
+          }
+        }
+      })
+    }
+
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
@@ -10,8 +37,15 @@ App({
     wx.login({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
+        this.host.userKey = res.code
+        this.proposal = new Proposal(this.host)
+        console.log("start")
+        setTimeout(() => {
+          wx.redirectTo({ url: '/pages/editor' })
+        }, 500)
       }
     })
+
     // 获取用户信息
     wx.getSetting({
       success: res => {
@@ -20,7 +54,7 @@ App({
           wx.getUserInfo({
             success: res => {
               // 可以将 res 发送给后台解码出 unionId
-              this.globalData.userInfo = res.userInfo
+              this.user = res.userInfo
 
               // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
               // 所以此处加入 callback 以防止这种情况
@@ -32,8 +66,5 @@ App({
         }
       }
     })
-  },
-  globalData: {
-    userInfo: null
   }
 })

@@ -19,7 +19,7 @@
 
 .card-title-text {
   display: inline-block;
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   line-height: 36rpx;
 }
 
@@ -31,21 +31,17 @@
   background-color: #fff;
   height: 80rpx;
   margin-bottom: 1px;
+  display: flex;
 }
 
 .card-content-label {
-  display: inline-block;
   margin-left: 20rpx;
-  font-size: 0.8rem;
   width: 40%;
 }
 
 .card-content-widget {
-  display: inline-block;
-  font-size: 0.8rem;
   text-align: right;
 }
-
 
 .bottom {
   width: 100%;
@@ -67,7 +63,6 @@
 
 .button-text {
   width: 100rpx;
-  font-size: 0.5em;
 }
 
 .button-img {
@@ -77,4 +72,74 @@
   margin-bottom: 1rpx;
   width: 60rpx;
   height: 60rpx;
+}
+
+.circle {
+    width: 60rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    border-radius: 50%;
+    color: #fff;
+    text-align: center;
+    background: #f00
+}
+
+.product-main {
+  display: flex;
+  height: 120rpx;
+  line-height: 60rpx;
+  background-color: #fff;
+  margin-bottom: 1px;
+}
+
+.product-rider {
+  display: flex;
+  height: 100rpx;
+  line-height: 50rpx;
+  background-color: #fff;
+  margin-bottom: 1px;
+}
+
+.text40 {
+  font-size: 2rem;
+}
+
+.text20 {
+  font-size: 1rem;
+}
+
+.text18 {
+  font-size: 0.95rem;
+}
+
+.text14 {
+  font-size: 0.85rem;
+}
+
+.text13 {
+  font-size: 0.8rem;
+}
+
+.text12 {
+  font-size: 0.85rem;
+}
+
+.text11 {
+  font-size: 0.7rem;
+}
+
+.text10 {
+  font-size: 0.65rem;
+}
+
+.text9 {
+  font-size: 0.6rem;
+}
+
+.text8 {
+  font-size: 0.55rem;
+}
+
+.text7 {
+  font-size: 0.5rem;
 }

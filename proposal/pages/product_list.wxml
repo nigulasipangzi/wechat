@@ -1,0 +1,30 @@
+<view class="popwin">
+  <view wx:for="{{list}}" wx:key="unique" wx:for-item="v" class="list-item">
+    <view class="list-item-top">
+      <view class="list-item-icon">
+        <image class="img-middle" src="https://sv-uat.iyb.tm/images/logo/fosun1.jpg"></image>
+      </view>
+      <view class="list-item-content">
+        <view>
+          <text class="list-item-title">{{v.name}}</text>
+        </view>
+        <view class="list-item-desc">
+          <view style="width:60%">
+            <text class="list-item-text">{{v.updateTime}}</text>
+          </view>
+          <view style="width:40%; text-align:right;">
+            <text class="list-item-text">保费：{{v.premium}}元</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="list-item-btm">
+      <view style="width:20%; padding:10rpx 0 0 20rpx;">
+        <image class="img-small" src="https://sv-uat.iyb.tm/images/delete.png"></image>
+      </view>
+      <view style="width:80%; text-align:right; padding:10rpx;">
+        <button class="btn-small" data-v="{{v}}" bindtap="edit">修改</button>
+      </view>
+    </view>
+  </view>
+</view>

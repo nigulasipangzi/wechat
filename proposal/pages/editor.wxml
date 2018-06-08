@@ -1,0 +1,73 @@
+<view>
+  <view class="card">
+    <view class="card-title">
+      <image class="card-title-img" src="{{userInfo.avatarUrl}}"></image>
+      <text class="card-title-text text12">被保险人1</text>
+    </view>
+    <view class="card-content">
+      <view class="card-content-line">
+        <view class="card-content-label text14">性别</view>
+        <view class="card-content-widget text14">
+          男 <switch bindchange="switch2Change"/> 女
+        </view>
+      </view>
+    </view>
+    <view class="card-content">
+      <view class="card-content-line">
+        <view class="card-content-label text14">年龄</view>
+        <view class="card-content-widget text14">
+          20周岁
+        </view>
+      </view>
+    </view>
+    <view class="card-title">
+      <image class="card-title-img" src="{{userInfo.avatarUrl}}"></image>
+      <text class="card-title-text text12">投保计划</text>
+    </view>
+    <view class="card-content">
+      <view class="{{v.parent == null ? 'product-main' : 'product-rider'}} text12" wx:for="{{plan.product}}" wx:key="unique" wx:for-item="v">
+        <view style="width:50rpx"></view>
+        <view style="width:200rpx">
+          <text>{{v.abbrName}}</text>
+        </view>
+        <view style="width:250rpx; display:flex;">
+          <view style="width:60rpx; margin:20rpx 10rpx 0 0;">
+            <view class="circle">
+              <text>保</text>
+            </view>
+          </view>
+          <view style="width:180rpx; height:100%;">
+            <view style="height:50%">
+              <text>{{v.purchase}}</text>
+            </view>
+            <view style="height:50%">
+              <text>{{v.insure}}</text>
+            </view>
+          </view>
+        </view>
+        <view style="width:250rpx; display:flex;">
+          <view style="width:60rpx; margin:20rpx 10rpx 0 0;">
+            <view class="circle">
+              <text>交</text>
+            </view>
+          </view>
+          <view style="width:180rpx; height:100%;">
+            <view style="height:50%">
+              <text>{{v.pay}}</text>
+            </view>
+            <view style="height:50%">
+              <text>{{v.premium}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+      <button bindtap="getOpenIdTap">添加产品</button>
+    </view>
+  </view>
+  <view class="bottom">
+    <view class="img-button" bindtap="openList">
+      <image class="button-img" src="{{userInfo.avatarUrl}}"></image>
+      <text class="button-text text9">历史计划</text>
+    </view>
+  </view>
+</view>

@@ -1,12 +1,13 @@
 {
   "pages":[
-    "pages/index/index",
-    "pages/logs/logs"
+    "pages/index",
+    "pages/editor",
+    "pages/product_list"
   ],
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
+    "navigationBarTitleText": "i云保",
     "navigationBarTextStyle":"black"
   }
 }
