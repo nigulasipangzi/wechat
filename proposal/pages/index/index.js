@@ -1,7 +1,7 @@
 import { User } from './user.js';  
 import { Proposal } from './proposal.js';  
 
-const HOST = "https://api-test.iyb.tm"
+const HOST = "http://www.lerrain.com:7666/wx"
 const PROPOSAL = new Proposal(HOST)
 const USER = new User(HOST)
 const APP = getApp()
@@ -26,10 +26,11 @@ Page({
         console.log(res)
         wx.request({
           //获取openid接口  
-          url: HOST + '/util/wechat/user.json',
+          url: HOST + '/x/login.json',
           data: { program: "proposal", jsCode: res.code },
           method: 'POST',
           success: function (res) {
+            console.log(res.data);
             if (res.data.result == "success") {
               USER.login("", (r) => {
                 PROPOSAL.create(r);

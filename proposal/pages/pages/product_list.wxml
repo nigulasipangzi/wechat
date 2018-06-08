@@ -1,0 +1,37 @@
+<view class="popwin">
+  <view class="card">
+    <view class="card-title">
+      <image class="card-title-img" src="{{userInfo.avatarUrl}}"></image>
+      <text class="card-title-text">被保险人1</text>
+    </view>
+    <view class="card-content">
+      <view class="card-content-line">
+        <view class="card-content-label">性别</view>
+        <view class="card-content-widget">
+          男 <switch bindchange="switch2Change"/> 女
+        </view>
+      </view>
+    </view>
+    <view class="card-content">
+      <view class="card-content-line">
+        <view class="card-content-label">年龄</view>
+        <view class="card-content-widget">
+          20周岁
+        </view>
+      </view>
+    </view>
+    <view class="card-title">
+      <image class="card-title-img" src="{{userInfo.avatarUrl}}"></image>
+      <text class="card-title-text">投保计划</text>
+    </view>
+    <view class="card-content">
+      <button bindtap="getOpenIdTap">添加产品</button>
+    </view>
+  </view>
+  <view class="bottom">
+    <view class="img-button" bindtap="openList">
+      <image class="button-img" src="{{userInfo.avatarUrl}}"></image>
+      <text class="button-text">历史计划</text>
+    </view>
+  </view>
+</view>
