@@ -1,0 +1,98 @@
+<view style="top:0">
+  <view class="card">
+    <view style="display:flex;">
+      <view class="tab tab-focus">
+        <text>被保险人1</text>
+      </view>
+      <view class="tab tab-blur">
+        <text>被保险人2</text>
+      </view>
+    </view>
+    <view class="card-content">
+      <view class="card-content-line">
+        <view class="card-content-label text14">性别</view>
+        <view class="card-content-widget text14">
+          男 <switch bindchange="switch2Change"/> 女
+        </view>
+      </view>
+    </view>
+    <view class="card-content">
+      <view class="card-content-line">
+        <view class="card-content-label text14">年龄</view>
+        <view class="card-content-widget text14">
+          20周岁
+        </view>
+      </view>
+    </view>
+    <view class="card-content" style="margin-top:20rpx">
+      <block wx:for="{{plan.product}}" wx:key="unique" wx:for-item="v">
+        <view class="product product-main text12" style="margin-top:6rpx" wx:if="{{v.parent == null}}">
+          <view style="width:100%; height:80rpx; display:flex; line-height:80rpx">
+            <image style="width:60rpx; height:60rpx; margin:10rpx;" src="https://sv-uat.iyb.tm/images/logo/fosun1.jpg"></image>
+            <view>
+              <text style="line-height:80rpx;">{{v.name}}</text>
+            </view>
+          </view>
+          <view style="width:100%; height:80rpx; display:flex;">
+            <view class="left">
+            </view>
+            <view class="middle">
+              <text>{{v.purchase}} / {{v.insure}} / {{v.pay}}</text>
+            </view>
+            <view class="right">
+              <text style="color:#000">{{v.premium}}元</text>
+            </view>
+          </view>
+        </view>
+        <view class="product product-rider text12" wx:else>
+          <view class="left">
+            <text style="color:#0a0;">附</text>
+          </view>
+          <view class="middle">
+            <text style="color:#000; margin-right:10rpx;">{{v.abbrName}}</text>
+            <text style="color:#aaa">{{v.purchase}} / {{v.insure}} / {{v.pay}}</text>
+          </view>
+          <view class="right">
+            <text style="color:#000">{{v.premium}}元</text>
+          </view>
+        </view>
+      </block>
+      <view wx:if="{{plan.product && plan.product.length > 0}}" class="card-content-line" style="padding:0 20rpx 0 20rpx; display:block; margin-top:6rpx; text-align:right; color:#09bb07;">
+        <text class="text14">合计：{{plan.premium}}元</text>
+      </view>
+      <view wx:else class="card-content-line" style="text-align:center; color:gray; display:block;">
+        <text class="text14">投保计划为空</text>
+      </view>
+      <view style="display:flex; margin:10rpx;">
+        <button style="margin:10rpx; width:220rpx; line-height:80rpx; height:80rpx; color:#fff; background-color:#1aad19;" class="text12" bindtap="addProduct">※ 添加主险</button>
+        <button style="margin:10rpx; width:220rpx; line-height:80rpx; height:80rpx; color:#fff; background-color:#1aad19;" class="text12" bindtap="addProduct">※ 选附加险</button>
+        <view></view>
+      </view>
+    </view>
+  </view>
+  <view class="bottom">
+    <view class="btn-img" bindtap="openProposalList">
+      <image src="./images/documents.png"></image>
+      <text>建议书</text>
+    </view>
+    <view style="width:400rpx; padding:6rpx 20rpx 6rpx 20rpx; line-height:44rpx; margin:0;">
+      <view>
+        <text class="text12" style="color:#fff">当前计划：{{plan.premium}}</text>
+      </view>
+      <view>
+        <text class="text12" style="color:#fff">全部计划：{{proposal.premium}}</text>
+      </view>
+    </view>
+    <view style="width:50rpx; line-height:100rpx; margin:0;">
+      <text class="text18" style="color:#fff">↑</text>
+    </view>
+    <view class="btn-img">
+      <image src="./images/md-levels-alt.png"></image>
+      <text>利益</text>
+    </view>
+    <view class="btn-img">
+      <image src="./images/arrow-1-right.png"></image>
+      <text>继续</text>
+    </view>
+  </view>
+</view>

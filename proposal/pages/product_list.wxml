@@ -1,30 +1,40 @@
 <view class="popwin">
-  <view wx:for="{{list}}" wx:key="unique" wx:for-item="v" class="list-item">
-    <view class="list-item-top">
-      <view class="list-item-icon">
-        <image class="img-middle" src="https://sv-uat.iyb.tm/images/logo/fosun1.jpg"></image>
-      </view>
-      <view class="list-item-content">
-        <view>
-          <text class="list-item-title">{{v.name}}</text>
-        </view>
-        <view class="list-item-desc">
-          <view style="width:60%">
-            <text class="list-item-text">{{v.updateTime}}</text>
-          </view>
-          <view style="width:40%; text-align:right;">
-            <text class="list-item-text">保费：{{v.premium}}元</text>
-          </view>
-        </view>
-      </view>
+  <view class="list-item">
+    <input style="width:550rpx; height:60rpx; margin:20rpx; border:#000 solid 1px;" bindfocus="showCondition" bindblur="hideCondition"></input>
+    <button class="text12 btn-search" style="width:130rpx; margin:15rpx;">搜索</button>
+  </view>
+  <view wx:if="{{condition}}">
+    <view style="display:flex; flex-wrap:wrap; margin:6rpx;">
+      <button class="text12 btn-search">热门</button>
+      <button class="text12 btn-search">医疗</button>
+      <button class="text12 btn-search">重疾</button>
+      <button class="text12 btn-search">定期寿</button>
+      <button class="text12 btn-search">终身寿</button>
+      <button class="text12 btn-search">少儿</button>
+      <button class="text12 btn-search">理财</button>
+      <button class="text12 btn-search">理财</button>
     </view>
-    <view class="list-item-btm">
-      <view style="width:20%; padding:10rpx 0 0 20rpx;">
-        <image class="img-small" src="https://sv-uat.iyb.tm/images/delete.png"></image>
+    <view style="display:flex; flex-wrap:wrap; margin:6rpx;">
+      <button class="text12 btn-search">百年人寿</button>
+      <button class="text12 btn-search">复兴联合健康</button>
+      <button class="text12 btn-search">太平人寿</button>
+      <button class="text12 btn-search">众安保险</button>
+      <button class="text12 btn-search">中国平安</button>
+    </view>
+  </view>
+  <view wx:else>
+    <view style="display:flex; flex-wrap:wrap; margin:6rpx;">
+      <button class="text12 btn-search">热门</button>
+      <button class="text12 btn-search">医疗</button>
+      <button class="text12 btn-search">重疾</button>
+      <button class="text12 btn-search">人寿</button>
+      <button class="text12 btn-search">少儿</button>
+    </view>
+    <view wx:for="{{list}}" wx:key="unique" wx:for-item="v" class="list-item">
+      <view class="list-item-icon">
+        <image src="https://sv-uat.iyb.tm/images/logo/fosun1.jpg"></image>
       </view>
-      <view style="width:80%; text-align:right; padding:10rpx;">
-        <button class="btn-small" data-v="{{v}}" bindtap="edit">修改</button>
-      </view>
+      <text class="text12" bindtap="addToPlan" data-v="{{v}}">{{v.name}}</text>
     </view>
   </view>
 </view>

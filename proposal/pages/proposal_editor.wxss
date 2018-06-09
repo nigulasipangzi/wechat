@@ -1,5 +1,6 @@
+@import "./css/common.wxss";
+
 .card {
-  background-color: #ddd;
   width: 100%;
 }
 
@@ -35,12 +36,14 @@
 }
 
 .card-content-label {
-  margin-left: 20rpx;
-  width: 40%;
+  width: 350rpx;
+  margin-left: 30rpx;
 }
 
 .card-content-widget {
+  width: 400rpx;
   text-align: right;
+  margin-right: 30rpx;
 }
 
 .bottom {
@@ -51,21 +54,33 @@
   position: fixed;
   left: 0;
   bottom: 0;
+  background-color: coral;
+  line-height: 50rpx;
 }
 
-.img-button {
+.btn-img {
   width: 100rpx;
   height: 100rpx;
   border-right: #eee solid 1px;
   line-height: 20rpx;
   text-align: center;
+  background-color: #fff;
 }
 
-.button-text {
+.btn-sky {
+  color: #fff;
+  line-height: 20rpx;
+  background-color: deepskyblue;
+  border-left: #2AD solid 1px;
+  border-right: 0;
+}
+
+.btn-img text {
   width: 100rpx;
+  font-size: 0.7rem;
 }
 
-.button-img {
+.btn-img image {
   margin-top: 8rpx;
   margin-left: 20rpx;
   margin-right: 20rpx;
@@ -74,71 +89,32 @@
   height: 60rpx;
 }
 
-.circle {
-    width: 60rpx;
-    height: 60rpx;
-    line-height: 60rpx;
-    border-radius: 50%;
-    color: #fff;
-    text-align: center;
-    background: #f00
+.product {
+  background-color: #fff;
+  margin-bottom: 1px;
 }
 
 .product-main {
   height: 140rpx;
   line-height: 60rpx;
-  background-color: #fff;
-  margin-bottom: 1px;
 }
 
 .product-rider {
   display: flex;
   height: 80rpx;
-  line-height: 50rpx;
-  background-color: #fff;
-  margin-bottom: 1px;
+  line-height: 80rpx;
 }
 
-.text40 {
-  font-size: 2rem;
+.product .left {
+  width: 80rpx; 
+  text-align: center;
 }
 
-.text20 {
-  font-size: 1rem;
+.product .middle {
+  width: 500rpx;
 }
 
-.text18 {
-  font-size: 0.95rem;
-}
-
-.text14 {
-  font-size: 0.85rem;
-}
-
-.text13 {
-  font-size: 0.8rem;
-}
-
-.text12 {
-  font-size: 0.85rem;
-}
-
-.text11 {
-  font-size: 0.7rem;
-}
-
-.text10 {
-  font-size: 0.65rem;
-}
-
-.text9 {
-  font-size: 0.6rem;
-}
-
-.text8 {
-  font-size: 0.55rem;
-}
-
-.text7 {
-  font-size: 0.5rem;
+.product .right {
+  width: 150rpx;
+  text-align: right;
 }

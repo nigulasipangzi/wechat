@@ -1,5 +1,4 @@
-const APP = getApp()
-
+// pages/product_editor.js
 Page({
 
   /**
@@ -20,14 +19,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    // 登录
-    wx.login({
-      success: res => {
-        APP.host.userKey = res.code
-        console.log("start")
-        wx.redirectTo({ url: '/pages/proposal_editor' })
-      }
-    })
+  
   },
 
   /**

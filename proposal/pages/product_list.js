@@ -1,24 +1,20 @@
 const APP = getApp()
 
-const Tools = require("../utils/util.js")
-
 Page({
 
   /**
    * 页面的初始数据
    */
-  data: {},
+  data: { condition: false },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let r = APP.proposal.query((r) => {
-      r.list.map(v => { v.updateTime = Tools.formatTime(new Date(v.updateTime)) })
-      wx.setNavigationBarTitle({ title: "我的建议书(" + r.total + ")" });
+    let r = APP.proposal.queryProduct("type:hot", (r) => {
+      wx.setNavigationBarTitle({ title: "选择产品" });
       this.setData({
-        total: r.total,
-        list: r.list
+        list: r
       })
     })
   },
@@ -72,7 +68,15 @@ Page({
   
   },
 
-  edit: function(e) {
-    wx.navigateTo({ url: './editor?proposalId=' + e.target.dataset.v.id })
+  showCondition: function() {
+    this.setData({ condition: true });
+  },
+
+  hideCondition: function() {
+    this.setData({ condition: false });
+  },
+
+  addToPlan: function (e) {
+    APP.navigateBack({ productId: e.target.dataset.v.code })
   }
 })

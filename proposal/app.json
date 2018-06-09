@@ -1,8 +1,10 @@
 {
   "pages":[
     "pages/index",
-    "pages/editor",
-    "pages/product_list"
+    "pages/product_list",
+    "pages/product_editor",
+    "pages/proposal_list",
+    "pages/proposal_editor"
   ],
   "window":{
     "backgroundTextStyle":"light",

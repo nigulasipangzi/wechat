@@ -1,33 +1,32 @@
 const APP = getApp()
+const Tools = require("../utils/util.js")
 
 Page({
 
   /**
    * 页面的初始数据
    */
-  data: {
-  
-  },
+  data: {},
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    let r = APP.proposal.query((r) => {
+      r.list.map(v => { v.updateTime = Tools.formatTime(new Date(v.updateTime)) })
+      wx.setNavigationBarTitle({ title: "我的建议书(" + r.total + ")" });
+      this.setData({
+        total: r.total,
+        list: r.list
+      })
+    })
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    // 登录
-    wx.login({
-      success: res => {
-        APP.host.userKey = res.code
-        console.log("start")
-        wx.redirectTo({ url: '/pages/proposal_editor' })
-      }
-    })
+  
   },
 
   /**
@@ -70,5 +69,9 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+
+  edit: function(e) {
+    APP.navigateBack({ proposalId: e.target.dataset.v.id })
   }
 })

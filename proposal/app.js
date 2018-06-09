@@ -2,10 +2,11 @@ import { Proposal } from './utils/proposal.js'
 
 App({
   host: {
-    address: "https://api-test.iyb.tm/wx",
-    // address: "http://www.lerrain.com:7666/wx",
+    // address: "https://api-test.iyb.tm/wx",
+    address: "http://www.lerrain.com:7666/wx",
     program: "proposal",
   },
+
   onLaunch: function () {
     this.host.req = (uri, param, onSucc, onFail) => {
       if (param == null)
@@ -28,23 +29,23 @@ App({
       })
     }
 
+    this.navigateBack = (param) => {
+      this._passport = param;
+      wx.navigateBack()
+    }
+
+    this.passport = () => {
+      let r = this._passport;
+      this._passport = null;
+      return r;
+    }
+
+    this.proposal = new Proposal(this.host)
+
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
-
-    // 登录
-    wx.login({
-      success: res => {
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
-        this.host.userKey = res.code
-        this.proposal = new Proposal(this.host)
-        console.log("start")
-        setTimeout(() => {
-          wx.redirectTo({ url: '/pages/editor' })
-        }, 500)
-      }
-    })
 
     // 获取用户信息
     wx.getSetting({
