@@ -2,12 +2,12 @@ const APP = getApp()
 
 Page({
   data: {
+    applicant: { age: 25, gender: "M" },
+    insurant: { age: 20, gender: "M" }
   },
   onLoad(options) {
     wx.setNavigationBarTitle({ title: "建议书" });
-    let applicant = {age: 25, gender: "M"};
-    let insurant = { age: 20, gender: "M" };
-    APP.proposal.create(applicant, insurant, (r) => {
+    APP.proposal.create(this.data.applicant, this.data.insurant, (r) => {
       this.setData({ proposal: r }, this.onProposal)
     })
   },
@@ -16,7 +16,7 @@ Page({
       wx.setNavigationBarTitle({ title: this.data.proposal.name });
     if (this.data.proposal.detail.length > 0) {
       APP.proposal.viewPlan(this.data.proposal.detail[0], (r) => {
-        this.setData({ plan: r })
+        this.setData({ plan: r, insurant: r.insurant })
       });
     }
   },
@@ -36,9 +36,8 @@ Page({
     }
   },
   onGenderChange(e) {
-    let ins = this.data.plan.insurant
-    ins.gender = e.detail.value ? "F" : "M"
-    APP.proposal.refreshInsurant(this.data.plan.planId, ins, (r) => {
+    this.data.insurant.gender = e.detail.value ? "F" : "M"
+    APP.proposal.refreshInsurant(this.data.plan.planId, this.data.insurant, (r) => {
       this.setData({ plan: r })
     })
   },
