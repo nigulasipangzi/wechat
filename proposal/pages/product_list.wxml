@@ -1,40 +1,35 @@
 <view class="popwin">
-  <view class="list-item">
-    <input style="width:550rpx; height:60rpx; margin:20rpx; border:#000 solid 1px;" bindfocus="showCondition" bindblur="hideCondition"></input>
-    <button class="text12 btn-search" style="width:130rpx; margin:15rpx;">搜索</button>
-  </view>
-  <view wx:if="{{condition}}">
-    <view style="display:flex; flex-wrap:wrap; margin:6rpx;">
-      <button class="text12 btn-search">热门</button>
-      <button class="text12 btn-search">医疗</button>
-      <button class="text12 btn-search">重疾</button>
-      <button class="text12 btn-search">定期寿</button>
-      <button class="text12 btn-search">终身寿</button>
-      <button class="text12 btn-search">少儿</button>
-      <button class="text12 btn-search">理财</button>
-      <button class="text12 btn-search">理财</button>
-    </view>
-    <view style="display:flex; flex-wrap:wrap; margin:6rpx;">
-      <button class="text12 btn-search">百年人寿</button>
-      <button class="text12 btn-search">复兴联合健康</button>
-      <button class="text12 btn-search">太平人寿</button>
-      <button class="text12 btn-search">众安保险</button>
-      <button class="text12 btn-search">中国平安</button>
+  <view class="console" style="position:fixed; top:0; left:0;">
+    <view class="search">
+      <image src="./images/zoom.png"/>
+      <input bindfocus="showCondition" bindblur="hideCondition" value="{{ vendor == null ? search : vendors[vendor] }}"></input>
+      <image src="./images/stop.png" bindtap="clear"/>
     </view>
   </view>
-  <view wx:else>
-    <view style="display:flex; flex-wrap:wrap; margin:6rpx;">
-      <button class="text12 btn-search">热门</button>
-      <button class="text12 btn-search">医疗</button>
-      <button class="text12 btn-search">重疾</button>
-      <button class="text12 btn-search">人寿</button>
-      <button class="text12 btn-search">少儿</button>
-    </view>
-    <view wx:for="{{list}}" wx:key="unique" wx:for-item="v" class="list-item">
-      <view class="list-item-icon">
-        <image src="https://sv-uat.iyb.tm/images/logo/fosun1.jpg"></image>
+  <block wx:if="{{focus && search == ''}}">
+    <view style="margin-top:100rpx">
+      <view class="keys" style="display:flex; flex-wrap:wrap;">
+       <view wx:for="{{sorts}}" wx:key="unique" wx:for-item="v" wx:for-index="i" class="text17 search-key" bindtap="onQuerySort" data-i="{{i}}">{{v}}</view>
       </view>
-      <text class="text12" bindtap="addToPlan" data-v="{{v}}">{{v.name}}</text>
+      <view class="keys" style="display:flex; flex-wrap:wrap;">
+        <view wx:for="{{vendors}}" wx:key="unique" wx:for-item="v" wx:for-index="i" class="text17 search-key"bindtap="onQueryVendor" data-i="{{i}}">{{v}}</view>
+      </view>
     </view>
-  </view>
+  </block>
+  <block wx:else>
+    <view class="keys" style="position:fixed; top:100rpx; height:80rpx; display:flex; margin:0; padding:0 10rpx 0 10rpx;">
+      <view wx:for="{{sorts}}" wx:key="unique" wx:for-item="v" wx:for-index="i" class="text18 tab {{i == sort ? 'tab-focus' : 'tab-blur'}}" style="width:120rpx;" bindtap="onQuerySort" data-i="{{i}}">{{v}}</view>
+    </view>
+    <view style="margin-top:180rpx;">
+      <view wx:for="{{list}}" wx:key="unique" wx:for-item="v" class="list-item" bindtap="addToPlan" data-v="{{v}}">
+        <view class="list-item-icon">
+          <image src="{{v.icon}}"></image>
+        </view>
+        <view class="list-item-content">
+          <view class="text18" style="height:45rpx; line-height:45rpx;">{{v.name}}</view>
+          <view class="text12" style="height:35rpx; line-height:35rpx; color:gray;">{{v.name}}</view>
+        </view>
+      </view>
+    </view>
+  </block>
 </view>

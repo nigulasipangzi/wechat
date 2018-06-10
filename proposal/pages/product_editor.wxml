@@ -1,2 +1,35 @@
-<!--pages/product_editor.wxml-->
-<text>pages/product_editor.wxml</text>
+<view class="popwin" hidden="{{!visible}}">
+  <view style="margin-top:{{y}}px; height:100%; background-color:#fff;" animation="{{ani}}">
+    <view style="height:80rpx; line-height:80rpx; text-align:center; border-bottom: #aaa solid 1px;">
+      <text class="text18">{{product.name}}</text>
+    </view>
+    <view wx:for="{{comps}}" wx:for-item="v" wx:for-index="i" class="form-line">
+      <view style="width:300rpx; margin:10rpx 0 0 20rpx;">
+        <text class="text17">{{v.text}}</text>
+      </view>
+      <view style="width:410rpx; margin:10rpx 20rpx 0 0; text-align:right;">
+        <block wx:if="{{v.widget == 'number'}}">
+          <input type="number" placeholder="请输入{{v.text}}"/>
+        </block>
+        <block wx:elif="{{v.widget == 'switch' || v.widget == 'select'}}">
+          <picker mode="selector" range="{{v.options}}" value="{{v.index}}" bindchange="onChange" data-i="{{i}}">
+            <view style="display:flex">
+              <view style="width:350rpx; line-height:60rpx;">
+                <text class="text17">{{v.options[v.index]}}</text>
+              </view>
+              <image style="width:60rpx; height:60rpx;" src="./images/arrow-7-down.png"/>
+            </view>
+          </picker>
+        </block>
+        <block wx:else>
+        </block>
+      </view>
+    </view>
+    <view class="bottom">
+      <view style="display:flex; margin-left:115rpx;">
+        <button style="width:240rpx; margin:10rpx; line-height:80rpx; height:80rpx; color:#fff; background-color:#1aad19;" class="text18" bindtap="ok">※ 确定</button>
+        <button style="width:240rpx; margin:10rpx; line-height:80rpx; height:80rpx; color:#fff; background-color:#1aad19;" class="text18" bindtap="close">※ 取消</button>
+      </view>
+    </view>
+  </view>
+</view>

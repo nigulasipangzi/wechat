@@ -92,6 +92,7 @@
 .product {
   background-color: #fff;
   margin-bottom: 1px;
+  padding: 0;
 }
 
 .product-main {

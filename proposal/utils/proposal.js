@@ -7,13 +7,13 @@ class Proposal {
       onSucc(r);
     })
   }
-  queryProduct(text, onSucc) {
-    this.host.req('/proposal/list_clause.json', { search: text }, (r) => {
+  queryProduct(tag, vendor, text, onSucc) {
+    this.host.req('/proposal/query_clause.json', { tag: tag, company: vendor, text: text == "" ? null : text }, (r) => {
       onSucc(r);
     })
   }
-  create(applicant, onSucc) {
-    this.host.req('/proposal/create.json', { applicant: applicant }, (r) => {
+  create(applicant, insurant, onSucc) {
+    this.host.req('/proposal/create.json', { applicant: applicant, insurant: insurant }, (r) => {
       onSucc(r);
     })
   }
@@ -28,12 +28,27 @@ class Proposal {
     })
   }
   viewPlan(planId, onSucc) {
-    this.host.req('/proposal/plan/view.json', { planId: planId }, (r) => {
+    this.host.req('/proposal/plan/edit.json', { planId: planId }, (r) => {
+      onSucc(r);
+    })
+  }
+  refreshInsurant(planId, ins, onSucc) {
+    this.host.req('/proposal/plan/customer.json', { planId: planId, insurant: ins }, (r) => {
       onSucc(r);
     })
   }
   addProduct(planId, prdId, onSucc) {
     this.host.req('/proposal/plan/clause.json', { planId: planId, productId: prdId }, (r) => {
+      onSucc(r);
+    })
+  }
+  editProduct(planId, index, onSucc) {
+    this.host.req('/proposal/plan/view_clause.json', { planId: planId, index: index }, (r) => {
+      onSucc(r);
+    })
+  }
+  deleteProduct(planId, index, onSucc) {
+    this.host.req('/proposal/plan/remove_clause.json', { planId: planId, index: index }, (r) => {
       onSucc(r);
     })
   }

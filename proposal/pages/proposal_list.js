@@ -72,6 +72,6 @@ Page({
   },
 
   edit: function(e) {
-    APP.navigateBack({ proposalId: e.target.dataset.v.id })
+    APP.navigateBack({ proposalId: e.currentTarget.dataset.v.id })
   }
 })

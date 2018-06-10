@@ -1,8 +1,24 @@
 @import "./css/common.wxss";
 
 .popwin {
-  background-color: #ddd;
+  background-color: #fff;
   height: 100%;
+}
+
+.console {
+  width: 100%;
+  padding: 20rpx;
+  background-color: #ddd;
+}
+
+.keys {
+  box-sizing: border-box;
+  width: 100%; 
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20rpx;
+  border-bottom: #ddd solid 1px;
+  background-color: #fff;
 }
 
 .list-item {
@@ -10,13 +26,12 @@
   background-color: #fff;
   border-bottom: #ddd solid 1px;
   display: flex;
-  line-height: 100rpx;
 }
 
 .list-item-icon {
-  width: 100rpx;
-  height: 100rpx;
-  padding: 10rpx 0rpx 10rpx 20rpx;
+  width: 80rpx;
+  height: 80rpx;
+  margin: 10rpx 10rpx 10rpx 20rpx;
 }
 
 .list-item-icon image {
@@ -24,8 +39,11 @@
   height: 80rpx;
 }
 
-.btn-search {
-  height: 70rpx; 
-  line-height: 70rpx; 
-  margin: 6rpx;
+.list-item-content {
+  margin: 10rpx 20rpx 10rpx 10rpx;
+}
+
+.search-key {
+  padding: 0 20rpx 0 20rpx;
+  line-height: 60rpx;
 }

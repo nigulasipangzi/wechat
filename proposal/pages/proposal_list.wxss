@@ -1,51 +1,50 @@
+@import "./css/common.wxss";
+
 .list-item {
   height: 200rpx;
   background-color: #fff;
-  border: #000 solid 1px;
+  margin-top: 6rpx;
 }
 
 .list-item-top {
   height: 120rpx;
   display: flex;
-  border-bottom: #aaa solid 1px;
+  border-bottom: #eee solid 1px;
 }
 
 .list-item-btm {
-  height: 80rpx;
+  height: 60rpx;
+  margin: 10rpx 20rpx 10rpx 20rpx;
+  line-height: 60rpx;
   display: flex;
 }
 
 .list-item-icon {
-  width: 130rpx;
-  height: 120rpx;
-  padding: 10rpx 10rpx 10rpx 20rpx;
+  width: 100rpx;
+  height: 100rpx;
+  margin: 10rpx 20rpx 10rpx 20rpx;
 }
 
 .list-item-content {
-  width: 600rpx;
-  height: 120rpx;
-  padding: 10rpx 20rpx 10rpx 0;
+  width: 500rpx;
+  height: 100rpx;
+  margin: 10rpx 10rpx 10rpx 0rpx;
 }
 
-.list-item-title {
-  font-size: 0.9rem;
-}
-
-.list-item-desc {
-  width: 100%;
-  display: flex;
-}
-
-.list-item-text {
-  font-size: 0.8rem;
-}
-
-.img-small {
+.icon-sm {
+  opacity: 0.5;
   width: 60rpx;
   height: 60rpx;
 }
 
-.img-middle {
+.icon-md {
+  opacity: 0.5;
+  width: 80rpx;
+  height: 80rpx;
+  margin: 20rpx 0 0 20rpx;
+}
+
+.icon-lg {
   width: 100rpx;
   height: 100rpx;
 }
@@ -53,7 +52,5 @@
 .btn-small {
   width: 120rpx;
   height: 60rpx;
-  font-size: 0.8rem;
   line-height: 60rpx;
-  margin-right: 0;
 }

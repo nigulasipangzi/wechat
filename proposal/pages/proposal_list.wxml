@@ -1,29 +1,29 @@
-<view class="popwin">
-  <view wx:for="{{list}}" wx:key="unique" wx:for-item="v" class="list-item">
+<view>
+  <view wx:for="{{list}}" wx:key="unique" wx:for-item="v" class="list-item" data-v="{{v}}" bindtap="edit">
     <view class="list-item-top">
       <view class="list-item-icon">
-        <image class="img-middle" src="https://sv-uat.iyb.tm/images/logo/fosun1.jpg"></image>
+        <image class="icon-lg" src="https://sv-uat.iyb.tm/images/logo/fosun1.jpg"></image>
       </view>
       <view class="list-item-content">
-        <view>
-          <text class="list-item-title">{{v.name}}</text>
-        </view>
-        <view class="list-item-desc">
-          <view style="width:60%">
-            <text class="list-item-text">{{v.updateTime}}</text>
-          </view>
-          <view style="width:40%; text-align:right;">
-            <text class="list-item-text">保费：{{v.premium}}元</text>
+        <view style="height:60rpx; display:flex">
+          <view style="width:500rpx">
+            <text class="list-item-title text20">{{v.name == null ? "我的建议书" : v.name}}</text>
           </view>
         </view>
+        <view style="height:40rpx">
+          <text class="list-item-text text16">{{v.updateTime}}</text>
+        </view>
+      </view>
+      <view style="width:80rpx">
+        <image class="icon-md" src="./images/arrow-7-right.png"></image>
       </view>
     </view>
     <view class="list-item-btm">
-      <view style="width:20%; padding:10rpx 0 0 20rpx;">
-        <image class="img-small" src="https://sv-uat.iyb.tm/images/delete.png"></image>
+      <view style="width:120rpx; text-align:left; margin:0 auto 0 0;">
+        <image class="icon-sm" src="./images/stop.png"></image>
       </view>
-      <view style="width:80%; text-align:right; padding:10rpx;">
-        <button class="btn-small" data-v="{{v}}" bindtap="edit">修改</button>
+      <view style="width:630rpx; text-align:right;">
+        <text class="list-item-text text16">保费：{{v.premium}}元</text>
       </view>
     </view>
   </view>

@@ -1,1 +1,5 @@
-{}
+{
+  "usingComponents": {
+    "productEditor": "./product_editor"
+  }
+}
