@@ -17,6 +17,11 @@ class Proposal {
       onSucc(r);
     })
   }
+  createPlan(proposalId, insurant, onSucc) {
+    this.host.req('/proposal/create_plan.json', { proposalId: proposalId, insurant: insurant }, (r) => {
+      onSucc(r);
+    })
+  }
   load(proposalId, onSucc) {
     this.host.req('/proposal/load.json', { proposalId: proposalId }, (r) => {
       onSucc(r);
@@ -54,6 +59,11 @@ class Proposal {
   }
   listRiders(planId, onSucc) {
     this.host.req('/proposal/plan/list_riders.json', { planId: planId }, (r) => {
+      onSucc(r);
+    })
+  }
+  format(planId, style, onSucc) {
+    this.host.req('/proposal/plan/format.json', { planId: planId, style: style }, (r) => {
       onSucc(r);
     })
   }

@@ -1,100 +1,103 @@
 <view>
-  <view class="card">
-    <view style="display:flex;">
-      <view class="tab {{ i == 0 ? 'tab-focus' : 'tab-blur' }}" style="width:250rpx;" wx:for="{{proposal.detail}}" wx:for-index="i"> 
-        <text class="text18">被保险人{{ i + 1 }}</text>
+  <view style="display:flex; position:fixed; z-index:50; top:0; background-color:#e6e6e6;">
+    <view class="tab {{ i == index ? 'tab-focus' : 'tab-blur' }}" style="width:250rpx;" wx:for="{{proposal.detail}}" wx:for-index="i" bindtap="onPlanSwitch" data-i="{{i}}"> 
+      <text class="text18">被保险人{{ i + 1 }}</text>
+    </view>
+    <view wx:if="{{ proposal.detail.length < 3 }}" style="width:{{750-250*proposal.detail.length}}rpx; height:80rpx; text-align:right;" bindtap="createPlan">
+      <image style="width:60rpx; height:60rpx; padding:10rpx; opacity: 0.7;" src="./images/file-add.png"></image>
+    </view>
+  </view>
+  <view class="card-content" style="margin-top:80rpx;">
+    <view class="card-content-line">
+      <view class="card-content-label text17">性别</view>
+      <view class="card-content-widget text17">
+        <view class="text17" style="padding-left:10rpx">女</view>
+        <switch bindchange="onGenderChange" checked="{{insurant.gender == 'F'}}"/>
+        <view class="text17" style="padding-right:10rpx">男</view>
       </view>
     </view>
-    <view class="card-content">
-      <view class="card-content-line">
-        <view class="card-content-label text17">性别</view>
-        <view class="card-content-widget text17">
-          <view class="text17" style="padding-left:10rpx">女</view>
-          <switch bindchange="onGenderChange" checked="{{insurant.gender == 'F'}}"/>
-          <view class="text17" style="padding-right:10rpx">男</view>
-        </view>
-      </view>
-    </view>
-    <view class="card-content">
-      <view class="card-content-line">
-        <view class="card-content-label text17">年龄</view>
-        <view class="card-content-widget">
-          <picker mode="selector" range="{{ages}}" value="{{insurant.age}}" bindchange="onAgeChange">
-            <view style="display:flex">
-              <view class="text17">{{insurant.age}}周岁</view>
-              <image style="width:60rpx; height:60rpx; padding:10rpx 0 10rpx 10rpx;" src="./images/arrow-7-right.png"></image>
-            </view>
-          </picker>
-          <image style="width:60rpx; height:60rpx; padding:10rpx 30rpx 10rpx 10rpx;" src="./images/zoom.png" bindtap="setInsBirthday"/>
-        </view>
-      </view>
-    </view>
-    <view class="card-content" style="margin-top:20rpx;">
-      <block wx:for="{{plan.product}}" wx:key="unique" wx:for-item="v" wx:for-index="i">
-        <view class="product product-main text16" style="margin-top:6rpx;" wx:if="{{v.parent == null}}" bindtap="editProduct" data-i="{{i}}">
-          <view style="height:70rpx; display:flex;">
-            <image style="width:60rpx; height:60rpx; margin: 10rpx 10rpx 0 10rpx;" src="{{plan.icons[v.vendor]}}"></image>
-            <view style="width:600rpx; margin-top:10rpx;">
-              <text class="text20">{{v.name}}</text>
-            </view>
-            <image style="width:50rpx; height:50rpx; padding:10rpx 10rpx 10rpx 10rpx; opacity:0.4;" src="./images/stop.png" bindtap="deleteProduct" data-i="{{i}}" data-tag="delete"/>
+  </view>
+  <view class="card-content">
+    <view class="card-content-line">
+      <view class="card-content-label text17">年龄</view>
+      <view class="card-content-widget">
+        <picker mode="selector" range="{{ages}}" value="{{insurant.age}}" bindchange="onAgeChange">
+          <view style="display:flex">
+            <view class="text17">{{insurant.age}}周岁</view>
+            <image style="width:60rpx; height:60rpx; padding:10rpx 0 10rpx 10rpx;" src="./images/arrow-7-right.png"></image>
           </view>
-          <view style="height:60rpx; display:flex;">
-            <view class="left">
-            </view>
-            <view class="middle">
-              <text>{{v.purchase}} / {{v.insure}} / {{v.pay}}</text>
-            </view>
-            <view class="right">
-              <text style="color:#000">{{v.premium}}元</text>
-            </view>
+        </picker>
+        <picker mode="date" start="1950-01-01" end="{{now}}" value="{{insurant.birthday}}" bindchange="onBirthdayChange">
+          <image style="width:60rpx; height:60rpx; padding:10rpx 30rpx 10rpx 10rpx;" src="./images/calendar.png"/>
+        </picker>
+      </view>
+    </view>
+  </view>
+  <view class="card-content" style="margin-top:10rpx;">
+    <block wx:for="{{plan.product}}" wx:key="unique" wx:for-item="v" wx:for-index="i">
+      <view class="product product-main text16" style="margin-top:10rpx;" wx:if="{{v.parent == null}}" bindtap="editProduct" data-i="{{i}}">
+        <view style="height:70rpx; display:flex;">
+          <image style="width:60rpx; height:60rpx; margin: 10rpx 10rpx 0 10rpx;" src="{{plan.icons[v.vendor]}}"></image>
+          <view style="width:600rpx; margin-top:10rpx;">
+            <text class="text20 eclipse">{{v.name}}</text>
           </view>
-          <view style="height:10rpx;"></view>
+          <image style="width:50rpx; height:50rpx; padding:10rpx 10rpx 10rpx 10rpx; opacity:0.4;" src="./images/stop.png" bindtap="deleteProduct" data-i="{{i}}" data-tag="delete"/>
         </view>
-        <view class="product product-rider text16" wx:else>
+        <view style="height:60rpx; display:flex;">
           <view class="left">
-            <text style="color:#0a0;">附</text>
           </view>
-          <view class="middle">
-            <text style="color:#000; margin-right:10rpx;">{{v.abbrName}}</text>
-            <text style="color:#aaa">{{v.purchase}} / {{v.insure}} / {{v.pay}}</text>
+          <view class="middle eclipse">
+            <text>{{v.purchase}} / {{v.insure}} / {{v.pay}}</text>
           </view>
           <view class="right">
             <text style="color:#000">{{v.premium}}元</text>
           </view>
         </view>
-      </block>
-      <view wx:if="{{plan.product && plan.product.length > 0}}" class="card-content-line" style="padding:0 20rpx 0 20rpx; display:block; margin-top:6rpx; text-align:right; color:#09bb07;">
-        <text class="text16">合计：{{plan.premium}}元</text>
+        <view style="height:10rpx;"></view>
       </view>
-      <button style="margin:20rpx 10rpx 20rpx 10rpx; line-height:80rpx; height:80rpx; color:#fff; background-color:#1aad19;" class="text18" bindtap="addProduct">添加险种</button>
+      <view class="product product-rider text16" wx:else>
+        <view class="left">
+          <text style="color:#0a0;">附</text>
+        </view>
+        <view class="middle eclipse">
+          <text style="color:#000; margin-right:10rpx;">{{v.abbrName}}</text>
+          <text style="color:#aaa">{{v.purchase}} / {{v.insure}} / {{v.pay}}</text>
+        </view>
+        <view class="right">
+          <text style="color:#000">{{v.premium}}元</text>
+        </view>
+      </view>
+    </block>
+    <view wx:if="{{plan.product && plan.product.length > 0}}" class="card-content-line" style="padding:0 20rpx 0 20rpx; display:block; margin-top:10rpx; text-align:right; color:#09bb07;">
+      <text class="text16">合计：{{plan.premium}}元</text>
+    </view>
+    <button style="margin:20rpx 10rpx 20rpx 10rpx; line-height:80rpx; height:80rpx; color:#fff; background-color:#1aad19;" class="text18" bindtap="addProduct">添加险种</button>
+  </view>
+</view>
+<view style="height:120rpx"></view>
+<view class="bottom">
+  <view class="btn-img" bindtap="openProposalList">
+    <image src="./images/documents.png"></image>
+    <text>建议书</text>
+  </view>
+  <view style="width:400rpx; padding:6rpx 20rpx 6rpx 20rpx; line-height:44rpx; margin:0;">
+    <view>
+      <text class="text16" style="color:#fff">首年保费：{{plan.premium}}元</text>
+    </view>
+    <view>
+      <text class="text16" style="color:#fff">点击查看年度保费明细</text>
     </view>
   </view>
-  <view style="height:120rpx"></view>
-  <view class="bottom">
-    <view class="btn-img" bindtap="openProposalList">
-      <image src="./images/documents.png"></image>
-      <text>建议书</text>
-    </view>
-    <view style="width:400rpx; padding:6rpx 20rpx 6rpx 20rpx; line-height:44rpx; margin:0;">
-      <view>
-        <text class="text16" style="color:#fff">首年保费：{{plan.premium}}元</text>
-      </view>
-      <view>
-        <text class="text16" style="color:#fff">点击查看年度保费明细</text>
-      </view>
-    </view>
-    <view style="width:50rpx; line-height:100rpx; margin:0;">
-      <text class="text18" style="color:#fff">↑</text>
-    </view>
-    <view class="btn-img">
-      <image src="./images/md-levels-alt.png"></image>
-      <text>利益</text>
-    </view>
-    <view class="btn-img">
-      <image src="./images/arrow-1-right.png"></image>
-      <text>继续</text>
-    </view>
+  <view style="width:50rpx; line-height:100rpx; margin:0;">
+    <text class="text18" style="color:#fff">↑</text>
+  </view>
+  <view class="btn-img" bindtap="showBenefit">
+    <image src="./images/md-levels-alt.png"></image>
+    <text>利益</text>
+  </view>
+  <view class="btn-img">
+    <image src="./images/arrow-1-right.png"></image>
+    <text>继续</text>
   </view>
   <productEditor id="editor"/>
 </view>

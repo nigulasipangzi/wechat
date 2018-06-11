@@ -1,0 +1,22 @@
+<view>
+  <view style="display:flex; position:fixed; top:0; background-color:#e6e6e6;">
+    <view class="tab {{ i == mode ? 'tab-focus' : 'tab-blur' }}" style="width:250rpx;" wx:for="{{tabs}}" wx:for-item="v" wx:for-index="i" bindtap="onModeSwitch" data-i="{{i}}"> 
+      <text class="text18">{{v}}</text>
+    </view>
+  </view>
+  <view wx:if="{{ mode == 2 }}" style="display:flex; flex-direction:column; margin-top:80rpx;">
+    <view class="" style="margin-top:{{i!=0?10:0}}rpx; padding:0 20rpx 0 20rpx; background:#fff;" wx:for="{{coverage}}" wx:for-item="v" wx:for-index="i"> 
+      <view class="eclipse" style="width:690rpx; text-align:center; padding:10rpx; line-height:60rpx; border-bottom:#ddd solid 1px;">
+        <text class="text18">{{v.productName}}</text>
+      </view>
+      <view class="" style="" wx:for="{{v.content}}" wx:for-item="x" wx:for-index="j"> 
+        <text class="text17" style="margin:10rpx; line-height:60rpx;">● {{x.title}}</text>
+        <view class="" style="" wx:for="{{x.content}}" wx:for-item="y" wx:for-index="k"> 
+          <text class="text16" style="">　　{{y.text}}</text>
+        </view>
+        <view style="height:10rpx;"></view>
+      </view>
+      <view style="height:10rpx;"></view>
+    </view>
+  </view>
+</view>

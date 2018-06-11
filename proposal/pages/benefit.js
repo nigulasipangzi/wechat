@@ -5,19 +5,17 @@ Page({
   /**
    * 页面的初始数据
    */
-  data: {},
+  data: {
+    mode: 0,
+    tabs: ["保障项目", "利益图表", "责任条款"]
+  },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let r = APP.proposal.query((r) => {
-      r.list.map(v => { v.updateTime = APP.tools.formatTime(new Date(v.updateTime)) })
-      wx.setNavigationBarTitle({ title: "我的建议书(" + r.total + ")" });
-      this.setData({
-        total: r.total,
-        list: r.list
-      })
+    APP.proposal.format(options.planId, "coverage", r => {
+      this.setData({ coverage: r.coverage })
     })
   },
 
@@ -70,7 +68,8 @@ Page({
   
   },
 
-  edit: function(e) {
-    APP.navigateBack({ proposalId: e.currentTarget.dataset.v.id })
+  onModeSwitch(e) {
+    this.setData({ mode: e.currentTarget.dataset.i })
   }
+
 })

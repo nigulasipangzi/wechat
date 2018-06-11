@@ -40,6 +40,7 @@ App({
       return r;
     }
 
+    this.tools = require("./utils/util.js")
     this.proposal = new Proposal(this.host)
 
     // 展示本地存储能力

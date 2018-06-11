@@ -107,3 +107,9 @@ input {
   height: 48rpx;
   margin: 6rpx 16rpx 6rpx 16rpx;
 }
+
+.eclipse {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
