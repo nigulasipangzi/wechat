@@ -2,8 +2,8 @@ import { Proposal } from './utils/proposal.js'
 
 App({
   host: {
-    // address: "https://api-test.iyb.tm/wx",
-    address: "http://www.lerrain.com:7666/wx",
+    address: "https://api-test.iyb.tm/wx",
+    // address: "http://www.lerrain.com:7666/wx",
     program: "proposal",
   },
 
