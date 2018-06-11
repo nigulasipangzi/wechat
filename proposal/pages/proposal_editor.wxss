@@ -42,7 +42,8 @@
 
 .card-content-widget {
   width: 400rpx;
-  text-align: right;
+  display: flex;
+  flex-direction: row-reverse;
   margin-right: 30rpx;
 }
 

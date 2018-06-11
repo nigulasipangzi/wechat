@@ -9,15 +9,19 @@
       <view class="card-content-line">
         <view class="card-content-label text17">性别</view>
         <view class="card-content-widget text17">
-          男 <switch bindchange="onGenderChange" checked="{{insurant.gender == 'F'}}"/> 女
+          <view class="text17" style="padding-left:10rpx">女</view>
+          <switch bindchange="onGenderChange" checked="{{insurant.gender == 'F'}}"/>
+          <view class="text17" style="padding-right:10rpx">男</view>
         </view>
       </view>
     </view>
     <view class="card-content">
       <view class="card-content-line">
         <view class="card-content-label text17">年龄</view>
-        <view class="card-content-widget text17">
-          20周岁
+        <view class="card-content-widget">
+          <image style="width:60rpx; height:60rpx; padding:10rpx 0 10rpx 10rpx;" src="./images/arrow-7-right.png"></image>
+          <view class="text17">20周岁</view>
+          <image style="width:60rpx; height:60rpx; padding:10rpx 30rpx 10rpx 10rpx;" src="./images/zoom.png"></image>
         </view>
       </view>
     </view>
