@@ -2,10 +2,16 @@ const APP = getApp()
 
 Page({
   data: {
+    ages: [],
     applicant: { age: 25, gender: "M" },
     insurant: { age: 20, gender: "M" }
   },
   onLoad(options) {
+    let ages = [];
+    for (let i=0;i<70;i++)
+      ages.push(i);
+    this.setData({ ages: ages })
+
     wx.setNavigationBarTitle({ title: "建议书" });
     APP.proposal.create(this.data.applicant, this.data.insurant, (r) => {
       this.setData({ proposal: r }, this.onProposal)
@@ -37,8 +43,16 @@ Page({
   },
   onGenderChange(e) {
     this.data.insurant.gender = e.detail.value ? "F" : "M"
+    this.refreshInsurant();
+  },
+  onAgeChange(e) {
+    this.data.insurant.age = e.detail.value;
+    this.data.insurant.birthday = null;
+    this.refreshInsurant();
+  },
+  refreshInsurant() {
     APP.proposal.refreshInsurant(this.data.plan.planId, this.data.insurant, (r) => {
-      this.setData({ plan: r })
+      this.setData({ insurant: this.data.insurant, plan: r })
     })
   },
   openProposalList() { 

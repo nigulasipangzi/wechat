@@ -19,9 +19,13 @@
       <view class="card-content-line">
         <view class="card-content-label text17">年龄</view>
         <view class="card-content-widget">
-          <image style="width:60rpx; height:60rpx; padding:10rpx 0 10rpx 10rpx;" src="./images/arrow-7-right.png"></image>
-          <view class="text17">20周岁</view>
-          <image style="width:60rpx; height:60rpx; padding:10rpx 30rpx 10rpx 10rpx;" src="./images/zoom.png"></image>
+          <picker mode="selector" range="{{ages}}" value="{{insurant.age}}" bindchange="onAgeChange">
+            <view style="display:flex">
+              <view class="text17">{{insurant.age}}周岁</view>
+              <image style="width:60rpx; height:60rpx; padding:10rpx 0 10rpx 10rpx;" src="./images/arrow-7-right.png"></image>
+            </view>
+          </picker>
+          <image style="width:60rpx; height:60rpx; padding:10rpx 30rpx 10rpx 10rpx;" src="./images/zoom.png" bindtap="setInsBirthday"/>
         </view>
       </view>
     </view>
