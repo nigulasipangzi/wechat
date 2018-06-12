@@ -19,4 +19,7 @@
       <view style="height:10rpx;"></view>
     </view>
   </view>
+  <block wx:if="{{ mode == 1 }}">
+    <BenefitChart id="benefitChart"/>
+  </block>
 </view>

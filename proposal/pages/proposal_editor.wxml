@@ -99,5 +99,5 @@
     <image src="./images/arrow-1-right.png"></image>
     <text>继续</text>
   </view>
-  <productEditor id="editor"/>
+  <ProductEditor id="editor"/>
 </view>

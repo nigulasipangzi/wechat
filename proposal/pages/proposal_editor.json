@@ -1,5 +1,5 @@
 {
   "usingComponents": {
-    "productEditor": "./product_editor"
+    "ProductEditor": "./product_editor"
   }
 }

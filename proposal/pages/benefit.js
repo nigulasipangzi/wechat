@@ -69,7 +69,13 @@ Page({
   },
 
   onModeSwitch(e) {
-    this.setData({ mode: e.currentTarget.dataset.i })
-  }
+    this.setData({ mode: e.currentTarget.dataset.i }, this.onRepaint)
+  },
 
+  onRepaint() {
+    if (this.data.mode == 1) {
+      let win = this.selectComponent("#benefitChart")
+      win.draw()
+    }
+  }
 })

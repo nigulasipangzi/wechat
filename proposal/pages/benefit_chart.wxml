@@ -1,0 +1,3 @@
+<view>
+  <canvas canvas-id="chart071" style="width:750rpx; height:500rpx; margin-top:80rpx; background-color:#fff;"></canvas>
+</view>
