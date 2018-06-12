@@ -14,8 +14,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    APP.proposal.format(options.planId, "coverage", r => {
-      this.setData({ coverage: r.coverage })
+    APP.proposal.format(options.planId, "coverage,chart", r => {
+      this.setData({ coverage: r.coverage ? r.coverage : null, chart: r.chart ? r.chart : null })
     })
   },
 
@@ -74,8 +74,13 @@ Page({
 
   onRepaint() {
     if (this.data.mode == 1) {
-      let win = this.selectComponent("#benefitChart")
-      win.draw()
+      for (let i=0;i<this.data.chart.length;i++) {
+        let win = this.selectComponent("#benefitChart" + i)
+        if (win) {
+          win.prepare()
+          win.draw(wx.getSystemInfoSync().windowWidth / 2)
+        }
+      }
     }
   }
 })

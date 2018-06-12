@@ -1,6 +1,6 @@
-<view>
-  <view style="display:flex; position:fixed; top:0; background-color:#e6e6e6;">
-    <view class="tab {{ i == mode ? 'tab-focus' : 'tab-blur' }}" style="width:250rpx;" wx:for="{{tabs}}" wx:for-item="v" wx:for-index="i" bindtap="onModeSwitch" data-i="{{i}}"> 
+<view style="">
+  <view style="display:flex; position:fixed; top:0; background-color:#e6e6e6; z-index:100;">
+    <view class="tab {{ i == mode ? 'tab-focus' : 'tab-blur' }}" style="width:250rpx;" wx:key="unique" wx:for="{{tabs}}" wx:for-item="v" wx:for-index="i" bindtap="onModeSwitch" data-i="{{i}}"> 
       <text class="text18">{{v}}</text>
     </view>
   </view>
@@ -19,7 +19,10 @@
       <view style="height:10rpx;"></view>
     </view>
   </view>
-  <block wx:if="{{ mode == 1 }}">
-    <BenefitChart id="benefitChart"/>
-  </block>
+  <view wx:if="{{ mode == 1 }}" style="display:flex; flex-direction:column; margin-top:80rpx;">
+    <view style="display:flex; flex-direction:column;" wx:for="{{chart}}" wx:for-item="v" wx:for-index="i" wx:key="unique" wx:if="{{ v.content != null }}">
+      <BenefitChart id="benefitChart{{i}}" chart="{{v}}"/> 
+      <view style="height:10rpx; background-color:#e6e6e6;"/>
+    </view>
+  </view>
 </view>

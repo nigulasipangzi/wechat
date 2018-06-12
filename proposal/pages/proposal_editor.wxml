@@ -41,7 +41,7 @@
           <view style="width:600rpx; margin-top:10rpx;">
             <text class="text20 eclipse">{{v.name}}</text>
           </view>
-          <image style="width:50rpx; height:50rpx; padding:10rpx 10rpx 10rpx 10rpx; opacity:0.4;" src="./images/stop.png" bindtap="deleteProduct" data-i="{{i}}" data-tag="delete"/>
+          <image style="width:50rpx; height:50rpx; padding:10rpx 10rpx 10rpx 10rpx; opacity:0.4;" src="./images/stop.png" catchtap="deleteProduct" data-i="{{i}}" data-tag="delete"/>
         </view>
         <view style="height:60rpx; display:flex;">
           <view class="left">

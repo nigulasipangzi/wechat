@@ -1,1 +1,1 @@
-/* pages/benefit_chart.wxss */
+@import "./css/common.wxss";

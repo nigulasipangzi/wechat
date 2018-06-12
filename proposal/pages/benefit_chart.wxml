@@ -1,3 +1,21 @@
-<view>
-  <canvas canvas-id="chart071" style="width:750rpx; height:500rpx; margin-top:80rpx; background-color:#fff;"></canvas>
+<view class="text13" style="background-color:#fff; text-align:center;">
+  <view class="eclipse" style="width:690rpx; text-align:center; margin-left:30rpx; height:80rpx; line-height:80rpx; border-bottom:#ddd solid 1px;">
+    <text class="text18">{{productName}}</text>
+  </view>
+  <canvas canvas-id="chart071" style="width:750rpx; height:550rpx;" bindtouchstart="onTouch" bindtouchmove="onTouch"></canvas>
+  <view style="display:flex; margin-left:20rpx; line-height:50rpx;">
+    <view style="width:110rpx;">保单年度</view>
+    <view style="width:120rpx; color:{{ w == 0 ? '#008800' : '#aaaaaa' }};" wx:key="{{w}}" wx:for="{{[-2,-1,0,1,2]}}" wx:for-item="w">{{pos + w >= 0 ? "第" + (pos + w + 1) + "年" : ""}}</view>
+  </view>
+  <view style="display:flex; margin-left:20rpx; line-height:50rpx;">
+    <view style="width:110rpx;">期初年龄</view>
+    <view style="width:120rpx; color:{{ w == 0 ? '#008800' : '#aaaaaa' }};" wx:key="{{w}}" wx:for="{{[-2,-1,0,1,2]}}" wx:for-item="w">{{pos + w >= 0 ? (chart.age + pos + w) + "岁" : ""}}</view>
+  </view>
+  <view style="display:flex; flex-direction:column; line-height:50rpx;" wx:key="{{i}}" wx:for="{{chart.data}}" wx:for-item="v" wx:for-index="i">
+    <view style="display:flex; margin-left:20rpx;">
+      <view style="width:110rpx;">{{v.name}}</view>
+      <view style="width:120rpx; color:{{ w == 0 ? '#008800' : '#aaaaaa' }};" wx:key="{{w}}" wx:for="{{[-2,-1,0,1,2]}}" wx:for-item="w">{{pos + w >= 0 && pos + w < v.data.length ? v.data[pos + w] : ""}}</view>
+    </view>
+  </view>
+  <view style="height:30rpx;"></view>
 </view>

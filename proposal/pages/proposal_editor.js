@@ -74,12 +74,10 @@ Page({
     wx.navigateTo({ url: './product_list' })
   },
   editProduct(e) {
-    if (e.currentTarget.dataset.tag != "delete") {
-      APP.proposal.editProduct(this.data.plan.planId, e.currentTarget.dataset.i, (r) => {
-        let win = this.selectComponent("#editor")
-        win.open(r)
-      })
-    }
+    APP.proposal.editProduct(this.data.plan.planId, e.currentTarget.dataset.i, (r) => {
+      let win = this.selectComponent("#editor")
+      win.open(r)
+    })
   },
   deleteProduct(e) {
     APP.proposal.deleteProduct(this.data.plan.planId, e.currentTarget.dataset.i, (r) => {
