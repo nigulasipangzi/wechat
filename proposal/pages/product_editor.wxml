@@ -3,7 +3,7 @@
     <view style="height:80rpx; line-height:80rpx; text-align:center; border-bottom: #aaa solid 1px;">
       <text class="text18">{{product.name}}</text>
     </view>
-    <view wx:for="{{comps}}" wx:for-item="v" wx:for-index="i" class="form-line">
+    <view wx:for="{{comps}}" wx:for-item="v" wx:for-index="i" wx:key="unique" class="form-line">
       <view style="width:300rpx; margin:10rpx 0 0 20rpx;">
         <text class="text17">{{v.text}}</text>
       </view>

@@ -1,6 +1,6 @@
 <view>
   <view style="display:flex; position:fixed; z-index:50; top:0; background-color:#e6e6e6;">
-    <view class="tab {{ i == index ? 'tab-focus' : 'tab-blur' }}" style="width:250rpx;" wx:for="{{proposal.detail}}" wx:for-index="i" bindtap="onPlanSwitch" data-i="{{i}}"> 
+    <view class="tab {{ i == index ? 'tab-focus' : 'tab-blur' }}" wx:key="unique" style="width:250rpx;" wx:for="{{proposal.detail}}" wx:for-index="i" bindtap="onPlanSwitch" data-i="{{i}}"> 
       <text class="text18">被保险人{{ i + 1 }}</text>
     </view>
     <view wx:if="{{ proposal.detail.length < 3 }}" style="width:{{750-250*proposal.detail.length}}rpx; height:80rpx; text-align:right;" bindtap="createPlan">
