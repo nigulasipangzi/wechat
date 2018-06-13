@@ -95,7 +95,7 @@
     <image src="./images/md-levels-alt.png"></image>
     <text>利益</text>
   </view>
-  <view class="btn-img">
+  <view class="btn-img" bindtap="next">
     <image src="./images/arrow-1-right.png"></image>
     <text>继续</text>
   </view>

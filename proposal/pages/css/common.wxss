@@ -112,3 +112,12 @@ input {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
+.div {
+  display: flex;
+  flex-direction: column;
+}
+
+.divx {
+  display: flex;
+}

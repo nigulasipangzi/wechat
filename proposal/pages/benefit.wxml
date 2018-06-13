@@ -1,7 +1,7 @@
 <view style="">
   <view style="display:flex; position:fixed; top:0; background-color:#e6e6e6; z-index:100;">
-    <view class="tab {{ i == mode ? 'tab-focus' : 'tab-blur' }}" style="width:250rpx;" wx:key="unique" wx:for="{{tabs}}" wx:for-item="v" wx:for-index="i" bindtap="onModeSwitch" data-i="{{i}}"> 
-      <text class="text18">{{v}}</text>
+    <view class="text18 tab {{ i == mode ? 'tab-focus' : 'tab-blur' }}" style="width:250rpx;" wx:key="unique" wx:for="{{tabs}}" wx:for-item="v" wx:for-index="i" bindtap="onModeSwitch" data-i="{{i}}"> 
+      {{v}}
     </view>
   </view>
   <view wx:if="{{ mode == 2 }}" style="display:flex; flex-direction:column; margin-top:80rpx;">

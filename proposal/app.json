@@ -5,7 +5,8 @@
     "pages/product_editor",
     "pages/proposal_list",
     "pages/proposal_editor",
-    "pages/benefit"
+    "pages/benefit",
+    "pages/proposal_supply"
   ],
   "window": {
     "backgroundTextStyle": "light",

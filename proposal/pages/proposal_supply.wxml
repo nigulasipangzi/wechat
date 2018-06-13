@@ -1,0 +1,44 @@
+<view>
+  <view class="div" style="padding:10rpx; line-height:60rpx; height:60rpx;">
+    <text class="text18">被保险人</text>
+  </view>
+  <view class="div" style="background-color:#fff;">
+    <view class="divx" wx:for="{{proposal.plans}}" wx:for-item="v">
+      <view>{{v}}</view>
+    </view>
+  </view>
+  <view class="div" style="padding:10rpx; line-height:60rpx; height:60rpx;">
+    <text class="text18">投保人</text>
+  </view>
+  <view class="div" style="background-color:#fff;">
+    <view class="divx">
+      <view>XXX</view>
+    </view>
+  </view>
+  <view class="div" style="padding:10rpx; line-height:60rpx; height:60rpx;">
+    <text class="text18">代理人</text>
+    <text class="text18">去认证</text>
+  </view>
+  <view class="div" style="background-color:#fff;">
+    <view class="divx">
+      <view>姓名</view>
+    </view>
+    <view class="divx">
+      <view>手机</view>
+    </view>
+    <view class="divx">
+      <view>电子邮件</view>
+    </view>
+    <view class="divx">
+      <view>所在机构</view>
+    </view>
+  </view>
+  <view class="div" style="padding:10rpx; line-height:60rpx; height:60rpx;">
+    <text class="text18">建议书模版</text>
+  </view>
+  <view class="div" style="background-color:#fff;">
+    <view class="divx">
+      <view>XXX</view>
+    </view>
+  </view>
+</view>

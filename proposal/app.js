@@ -2,8 +2,8 @@ import { Proposal } from './utils/proposal.js'
 
 App({
   host: {
-    address: "https://api-test.iyb.tm/wx",
-    // address: "http://www.lerrain.com:7666/wx",
+    // address: "https://api-test.iyb.tm/wx",
+    address: "http://www.lerrain.com:7666/wx",
     program: "proposal",
   },
 
@@ -18,8 +18,7 @@ App({
         data: param,
         method: 'POST',
         success: function (res) {
-          console.log(param)
-          console.log(res.data)
+          console.log(uri, param, res.data)
           if (res.data.result == "success") {
             onSucc(res.data.content)
           } else if (onFail) {

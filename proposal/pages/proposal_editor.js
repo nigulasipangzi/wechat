@@ -22,7 +22,7 @@ Page({
   onProposal() {
     if (this.data.proposal.name)
       wx.setNavigationBarTitle({ title: this.data.proposal.name });
-    if (this.data.proposal.detail.length > 0) {
+    if (this.data.proposal.detail.length > this.data.index) {
       APP.proposal.viewPlan(this.data.proposal.detail[this.data.index], (r) => {
         this.setData({ plan: r, insurant: r.insurant })
       })
@@ -32,7 +32,7 @@ Page({
     let opt = APP.passport();
     if (opt) {
       if (opt.productId) {
-        APP.proposal.addProduct(this.data.plan.planId, opt.productId, (r) => {
+        APP.proposal.addProduct(this.data.plan.planId, null, opt.productId, (r) => {
           this.setData({ plan: r })
         })
       }
@@ -74,18 +74,28 @@ Page({
     wx.navigateTo({ url: './product_list' })
   },
   editProduct(e) {
-    APP.proposal.editProduct(this.data.plan.planId, e.currentTarget.dataset.i, (r) => {
-      let win = this.selectComponent("#editor")
-      win.open(r)
+    let win = this.selectComponent("#editor")
+    win.pop(this.data.plan, e.currentTarget.dataset.i, () => {
+      this.onProposal()
     })
+    
+    // APP.proposal.editProduct(this.data.plan.planId, e.currentTarget.dataset.i, r1 => {
+    //   APP.proposal.listRiders(this.data.plan.planId, e.currentTarget.dataset.i, r2 => {
+    //     let win = this.selectComponent("#editor")
+    //     win.open(r1, r2)
+    //   })
+    // })
   },
   deleteProduct(e) {
-    APP.proposal.deleteProduct(this.data.plan.planId, e.currentTarget.dataset.i, (r) => {
+    APP.proposal.deleteProduct(this.data.plan.planId, e.currentTarget.dataset.i, null, r => {
       this.setData({ plan: r })
     })
   },
   openProposalList() {
     wx.navigateTo({ url: './proposal_list' })
+  },
+  next() {
+    wx.navigateTo({ url: './proposal_supply?proposalId=' + this.data.proposal.proposalId })
   },
   showBenefit() {
     wx.navigateTo({ url: './benefit?planId=' + this.data.plan.planId })
