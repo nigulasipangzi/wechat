@@ -11,9 +11,9 @@
     <view class="card-content-line">
       <view class="card-content-label text17">性别</view>
       <view class="card-content-widget text17">
-        <view class="text17" style="padding-left:10rpx">女</view>
+        <view class="text17" style="padding:0 10rpx 0 10rpx">女</view>
         <switch bindchange="onGenderChange" checked="{{insurant.gender == 'F'}}"/>
-        <view class="text17" style="padding-right:10rpx">男</view>
+        <view class="text17" style="padding:0 10rpx 0 10rpx">男</view>
       </view>
     </view>
   </view>
@@ -80,7 +80,7 @@
     <image src="./images/documents.png"></image>
     <text>建议书</text>
   </view>
-  <view style="width:400rpx; padding:6rpx 20rpx 6rpx 20rpx; line-height:44rpx; margin:0;">
+  <view style="width:390rpx; padding:6rpx 20rpx 6rpx 20rpx; line-height:44rpx; margin:0;">
     <view>
       <text class="text16" style="color:#fff">首年保费：{{plan.premium}}元</text>
     </view>
@@ -88,8 +88,8 @@
       <text class="text16" style="color:#fff">点击查看年度保费明细</text>
     </view>
   </view>
-  <view style="width:50rpx; line-height:100rpx; margin:0;">
-    <text class="text18" style="color:#fff">↑</text>
+  <view style="width:60rpx; height:100rpx;">
+    <image style="width:60rpx; height:60rpx; margin-top:20rpx;" src="./images/arrow-4-up.png"></image>
   </view>
   <view class="btn-img" bindtap="showBenefit">
     <image src="./images/md-levels-alt.png"></image>

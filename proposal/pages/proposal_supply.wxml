@@ -1,40 +1,75 @@
 <view>
-  <view class="div" style="padding:10rpx; line-height:60rpx; height:60rpx;">
-    <text class="text18">被保险人</text>
+  <view class="div" style="padding:0 20rpx 0 20rpx; line-height:80rpx; height:80rpx;">
+    <text class="text17">投保人</text>
   </view>
-  <view class="div" style="background-color:#fff;">
-    <view class="divx" wx:for="{{proposal.plans}}" wx:for-item="v">
-      <view>{{v}}</view>
+  <view class="form-item" style="background-color:#fff;">
+    <view class="form-item-label">
+      <text class="text17">姓名</text>
+    </view>
+    <view class="form-item-widget">
+      <input type="text" style="text-align:right; margin-top:10rpx;" placeholder="姓名"/>
     </view>
   </view>
-  <view class="div" style="padding:10rpx; line-height:60rpx; height:60rpx;">
-    <text class="text18">投保人</text>
-  </view>
-  <view class="div" style="background-color:#fff;">
-    <view class="divx">
-      <view>XXX</view>
+  <view class="form-item" style="background-color:#fff;">
+    <view class="form-item-label">
+      <text class="text17">称呼</text>
+    </view>
+    <view class="form-item-widget">
+      <view class="text17" style="padding:0 10rpx 0 10rpx">女士</view>
+      <switch bindchange="onGenderChange" checked="{{insurant.gender == 'F'}}"/>
+      <view class="text17" style="padding:0 10rpx 0 10rpx">先生</view>
     </view>
   </view>
-  <view class="div" style="padding:10rpx; line-height:60rpx; height:60rpx;">
-    <text class="text18">代理人</text>
-    <text class="text18">去认证</text>
-  </view>
-  <view class="div" style="background-color:#fff;">
-    <view class="divx">
-      <view>姓名</view>
+  <!-- <view class="form-item" style="background-color:#fff;" wx:for="{{proposal.plans}}" wx:for-item="v">
+    <view class="form-item-label">
+      <text class="text17">被保险人{{v}}</text>
     </view>
-    <view class="divx">
-      <view>手机</view>
+    <view class="form-item-widget">
+      <input type="text" style="text-align:right; margin-top:10rpx;" placeholder="姓名"/>
     </view>
-    <view class="divx">
-      <view>电子邮件</view>
+  </view> -->
+  <view class="divx" style="padding:0 20rpx 0 20rpx; line-height:80rpx; height:80rpx;">
+    <view style="width:300rpx;">
+      <text class="text17">代理人</text>
     </view>
-    <view class="divx">
-      <view>所在机构</view>
+    <view style="width:410rpx; text-align:right; color:#09bb07;">
+      <text class="text17">认证享收益</text>
     </view>
   </view>
-  <view class="div" style="padding:10rpx; line-height:60rpx; height:60rpx;">
-    <text class="text18">建议书模版</text>
+  <view class="form-item" style="background-color:#fff;">
+    <view class="form-item-label">
+      <text class="text17">姓名</text>
+    </view>
+    <view class="form-item-widget">
+      <input type="text" style="text-align:right; margin-top:10rpx;" placeholder="姓名"/>
+    </view>
+  </view>
+  <view class="form-item" style="background-color:#fff;">
+    <view class="form-item-label">
+      <text class="text17">手机</text>
+    </view>
+    <view class="form-item-widget">
+      <input type="number" style="text-align:right; margin-top:10rpx;" placeholder="手机号码"/>
+    </view>
+  </view>
+  <view class="form-item" style="background-color:#fff;">
+    <view class="form-item-label">
+      <text class="text17">电子邮件</text>
+    </view>
+    <view class="form-item-widget">
+      <input type="text" style="text-align:right; margin-top:10rpx;" placeholder="电子邮箱地址"/>
+    </view>
+  </view>
+  <view class="form-item" style="background-color:#fff;">
+    <view class="form-item-label">
+      <text class="text17">所在机构</text>
+    </view>
+    <view class="form-item-widget">
+      <input type="text" style="text-align:right; margin-top:10rpx;" placeholder="公司名称"/>
+    </view>
+  </view>
+  <view class="div" style="padding:0 20rpx 0 20rpx; line-height:80rpx; height:80rpx;">
+    <text class="text17">建议书模版</text>
   </view>
   <view class="div" style="background-color:#fff;">
     <view class="divx">

@@ -79,7 +79,8 @@ page {
 input {
   height: 60rpx;
   box-sizing: border-box;
-  border-bottom: #09bb07 solid 1px;
+  padding: 0 10rpx 0 10rpx;
+  border-bottom: #e6e6e6 solid 1px;
   font-size: 1rem;
 }
 
@@ -120,4 +121,23 @@ input {
 
 .divx {
   display: flex;
+}
+
+.form-item {
+  display: flex;
+  height: 80rpx;
+  line-height: 80rpx;
+  margin-bottom: 1px;
+}
+
+.form-item-label {
+  width: 320rpx;
+  margin-left: 30rpx;
+}
+
+.form-item-widget {
+  width: 380rpx;
+  display: flex;
+  flex-direction: row-reverse;
+  margin-right: 20rpx;
 }
