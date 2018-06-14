@@ -71,9 +71,32 @@
   <view class="div" style="padding:0 20rpx 0 20rpx; line-height:80rpx; height:80rpx;">
     <text class="text17">建议书模版</text>
   </view>
-  <view class="div" style="background-color:#fff;">
-    <view class="divx">
-      <view>XXX</view>
+  <view class="div" style="overflow-x:scroll; width:750rpx;">
+    <view class="divx" style="background-color:#fff; width:1040rpx;">
+      <view class="divx" style="width:500rpx; margin:10rpx;">
+        <image style="width:240rpx; height:320rpx; margin-right:10rpx;" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1528960595017&di=f6df1b19342c3b3685448230a16f32f0&imgtype=0&src=http%3A%2F%2Fpic-cdn.35pic.com%2F58pic%2F17%2F19%2F43%2F25U58PICWXJ_1024.jpg"/>
+        <view class="text14">
+          <view>● A4规格</view>
+          <view>● 可下载PDF打印</view>
+          <view>● 可邮件发送客户</view>
+          <view>● 信息资料齐全</view>
+          <view>● 详细利益表</view>
+          <view>● 适合PC查看</view>
+          <view>● 不适合手机查看</view>
+        </view>
+      </view>
+      <view class="divx text16" style="width:500rpx; margin:10rpx;">
+        <image style="width:240rpx; height:320rpx; margin-right:10rpx;" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1528960595017&di=f6df1b19342c3b3685448230a16f32f0&imgtype=0&src=http%3A%2F%2Fpic-cdn.35pic.com%2F58pic%2F17%2F19%2F43%2F25U58PICWXJ_1024.jpg"/>
+        <view class="text14">
+          <view>● A4规格</view>
+          <view>● 可下载PDF打印</view>
+          <view>● 可邮件发送客户</view>
+          <view>● 信息资料齐全</view>
+          <view>● 详细利益表</view>
+          <view>● 适合PC查看</view>
+          <view>● 不适合手机查看</view>
+        </view>
+      </view>
     </view>
   </view>
 </view>
