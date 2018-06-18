@@ -9,6 +9,7 @@ App({
 
   onLaunch: function () {
     this.host.req = (uri, param, onSucc, onFail) => {
+      wx.showNavigationBarLoading()
       if (param == null)
         param = {}
       param.userKey = this.host.userKey
@@ -18,6 +19,7 @@ App({
         data: param,
         method: 'POST',
         success: function (res) {
+          wx.hideNavigationBarLoading()
           console.log(uri, param, res.data)
           if (res.data.result == "success") {
             onSucc(res.data.content)

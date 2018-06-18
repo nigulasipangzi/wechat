@@ -58,7 +58,7 @@
 .btn-img {
   width: 100rpx;
   height: 100rpx;
-  border-right: #eee solid 1px;
+  border-right: #dddddd solid 1px;
   line-height: 20rpx;
   text-align: center;
   background-color: #fff;

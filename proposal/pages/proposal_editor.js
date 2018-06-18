@@ -15,7 +15,7 @@ Page({
     this.setData({ ages: ages })
 
     wx.setNavigationBarTitle({ title: "建议书" })
-    APP.proposal.create(this.data.applicant, this.data.insurant, (r) => {
+    APP.proposal.create(this.data.applicant, this.data.insurant, r => {
       this.setData({ proposal: r, index: 0 }, this.onProposal)
     })
   },
@@ -23,7 +23,7 @@ Page({
     if (this.data.proposal.name)
       wx.setNavigationBarTitle({ title: this.data.proposal.name });
     if (this.data.proposal.detail.length > this.data.index) {
-      APP.proposal.viewPlan(this.data.proposal.detail[this.data.index], (r) => {
+      APP.proposal.viewPlan(this.data.proposal.detail[this.data.index], r => {
         this.setData({ plan: r, insurant: r.insurant })
       })
     }
@@ -31,13 +31,14 @@ Page({
   onShow() {
     let opt = APP.passport();
     if (opt) {
-      if (opt.productId) {
-        APP.proposal.addProduct(this.data.plan.planId, null, opt.productId, (r) => {
+      if (opt.refresh) {
+        this.onProposal()
+      } else if (opt.productId) {
+        APP.proposal.addProduct(this.data.plan.planId, null, opt.productId, r => {
           this.setData({ plan: r })
         })
-      }
-      if (opt.proposalId) {
-        APP.proposal.load(opt.proposalId, (r) => {
+      } else if (opt.proposalId) {
+        APP.proposal.load(opt.proposalId, r => {
           this.setData({ proposal: r, index: 0 }, this.onProposal)
         })
       }
@@ -60,31 +61,26 @@ Page({
     this.setData({ index: e.currentTarget.dataset.i }, this.onProposal)
   },
   refreshInsurant() {
-    APP.proposal.refreshInsurant(this.data.plan.planId, this.data.insurant, (r) => {
+    APP.proposal.refreshInsurant(this.data.plan.planId, this.data.insurant, r => {
       this.setData({ insurant: r.insurant, plan: r })
     })
   },
   createPlan() {
     let insurant = { gender: "M", age: "20" }
-    APP.proposal.createPlan(this.data.proposal.proposalId, insurant, (r) => {
+    APP.proposal.createPlan(this.data.proposal.proposalId, insurant, r => {
       this.setData({ proposal: r, index: r.detail.length - 1 }, this.onProposal)
+    })
+  },
+  deletePlan(e) {
+    APP.proposal.deletePlan(this.data.proposal.proposalId, this.data.proposal.detail[e.currentTarget.dataset.i], r => {
+      this.setData({ proposal: r, index: 0 }, this.onProposal)
     })
   },
   addProduct() {
     wx.navigateTo({ url: './product_list' })
   },
   editProduct(e) {
-    let win = this.selectComponent("#editor")
-    win.pop(this.data.plan, e.currentTarget.dataset.i, () => {
-      this.onProposal()
-    })
-    
-    // APP.proposal.editProduct(this.data.plan.planId, e.currentTarget.dataset.i, r1 => {
-    //   APP.proposal.listRiders(this.data.plan.planId, e.currentTarget.dataset.i, r2 => {
-    //     let win = this.selectComponent("#editor")
-    //     win.open(r1, r2)
-    //   })
-    // })
+    wx.navigateTo({ url: './product_editor?planId=' + this.data.plan.planId + "&index=" + e.currentTarget.dataset.i })
   },
   deleteProduct(e) {
     APP.proposal.deleteProduct(this.data.plan.planId, e.currentTarget.dataset.i, null, r => {
@@ -98,6 +94,9 @@ Page({
     wx.navigateTo({ url: './proposal_supply?proposalId=' + this.data.proposal.proposalId })
   },
   showBenefit() {
-    wx.navigateTo({ url: './benefit?planId=' + this.data.plan.planId })
+    if (this.data.plan.product == null || this.data.plan.product.length == 0)
+      wx.showToast({ icon: 'none', title: '计划为空' })
+    else
+      wx.navigateTo({ url: './benefit?planId=' + this.data.plan.planId })
   }
 })

@@ -1,10 +1,11 @@
 <view>
-  <view style="display:flex; position:fixed; z-index:50; top:0; background-color:#e6e6e6;">
-    <view class="tab {{ i == index ? 'tab-focus' : 'tab-blur' }}" wx:key="unique" style="width:250rpx;" wx:for="{{proposal.detail}}" wx:for-index="i" bindtap="onPlanSwitch" data-i="{{i}}"> 
-      <text class="text18">被保险人{{ i + 1 }}</text>
+  <view style="display:flex; position:fixed; z-index:1; top:0;">
+    <view class="divx text18 center tab {{ i == index ? 'tab-focus' : 'tab-blur' }}" wx:key="{{i}}" style="width:250rpx;" wx:for="{{proposal.detail}}" wx:for-index="i" bindtap="onPlanSwitch" data-i="{{i}}">
+      <image wx:if="{{ i == index }}" class="btn-sm ml-auto" src="./images/del.png" catchtap="deletePlan" data-i="{{i}}"/>
+      <view class="{{ i == index ? '' : 'ml-auto'}} mr-auto">被保险人{{ i + 1 }}</view>
     </view>
-    <view wx:if="{{ proposal.detail.length < 3 }}" style="width:{{750-250*proposal.detail.length}}rpx; height:80rpx; text-align:right;" bindtap="createPlan">
-      <image style="width:60rpx; height:60rpx; padding:10rpx; opacity: 0.7;" src="./images/file-add.png"></image>
+    <view wx:if="{{ proposal.detail.length < 3 }}" class="tab tab-blur" wx:key="{{i}}" style="width:{{750-250*proposal.detail.length}}rpx; text-align:right;" bindtap="createPlan">
+      <image class="btn-sm mr-1" src="./images/add.png"/>
     </view>
   </view>
   <view class="card-content" style="margin-top:80rpx;">
@@ -36,12 +37,12 @@
   <view class="card-content" style="margin-top:10rpx;">
     <block wx:for="{{plan.product}}" wx:key="unique" wx:for-item="v" wx:for-index="i">
       <view class="product product-main text16" style="margin-top:10rpx;" wx:if="{{v.parent == null}}" bindtap="editProduct" data-i="{{i}}">
-        <view style="height:70rpx; display:flex;">
-          <image style="width:60rpx; height:60rpx; margin: 10rpx 10rpx 0 10rpx;" src="{{plan.icons[v.vendor]}}"></image>
-          <view style="width:600rpx; margin-top:10rpx;">
+        <view class="pt-1" style="height:70rpx; display:flex;">
+          <image style="width:60rpx; height:60rpx; margin: 0 10rpx 0 10rpx;" src="{{plan.icons[v.vendor]}}"></image>
+          <view style="width:600rpx;">
             <text class="text20 eclipse">{{v.name}}</text>
           </view>
-          <image style="width:50rpx; height:50rpx; padding:10rpx 10rpx 10rpx 10rpx; opacity:0.4;" src="./images/stop.png" catchtap="deleteProduct" data-i="{{i}}" data-tag="delete"/>
+          <image class="btn-sm" src="./images/del.png" catchtap="deleteProduct" data-i="{{i}}" data-tag="delete"/>
         </view>
         <view style="height:60rpx; display:flex;">
           <view class="left">
@@ -71,33 +72,34 @@
     <view wx:if="{{plan.product && plan.product.length > 0}}" class="card-content-line" style="padding:0 20rpx 0 20rpx; display:block; margin-top:10rpx; text-align:right; color:#09bb07;">
       <text class="text16">合计：{{plan.premium}}元</text>
     </view>
-    <button style="margin:20rpx 10rpx 20rpx 10rpx; line-height:80rpx; height:80rpx; color:#fff; background-color:#1aad19;" class="text18" bindtap="addProduct">添加险种</button>
+    <button class="btn-fl text18 ml-2 mr-2 mt-2" bindtap="addProduct">添加险种</button>
   </view>
 </view>
 <view style="height:120rpx"></view>
 <view class="bottom">
   <view class="btn-img" bindtap="openProposalList">
     <image src="./images/documents.png"></image>
-    <text>建议书</text>
+    <text>历史</text>
   </view>
-  <view style="width:390rpx; padding:6rpx 20rpx 6rpx 20rpx; line-height:44rpx; margin:0;">
-    <view>
-      <text class="text16" style="color:#fff">首年保费：{{plan.premium}}元</text>
+  <view class="divx" style="width:450rpx;">
+    <view style="width:390rpx; padding:6rpx 20rpx 6rpx 20rpx; line-height:44rpx; margin:0;">
+      <view>
+        <text class="text16" style="color:#fff">首年保费：{{plan.premium}}元</text>
+      </view>
+      <view>
+        <text class="text16" style="color:#fff">点击查看年度保费明细</text>
+      </view>
     </view>
-    <view>
-      <text class="text16" style="color:#fff">点击查看年度保费明细</text>
+    <view style="width:60rpx; height:100rpx;">
+      <image style="width:60rpx; height:60rpx; margin-top:20rpx;" src="./images/arrow-4-up.png"></image>
     </view>
-  </view>
-  <view style="width:60rpx; height:100rpx;">
-    <image style="width:60rpx; height:60rpx; margin-top:20rpx;" src="./images/arrow-4-up.png"></image>
   </view>
   <view class="btn-img" bindtap="showBenefit">
     <image src="./images/md-levels-alt.png"></image>
     <text>利益</text>
   </view>
   <view class="btn-img" bindtap="next">
-    <image src="./images/arrow-1-right.png"></image>
-    <text>继续</text>
+    <image src="./images/print.png"></image>
+    <text>生成</text>
   </view>
-  <ProductEditor id="editor"/>
 </view>

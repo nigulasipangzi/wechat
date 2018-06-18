@@ -9,8 +9,9 @@
     "pages/proposal_supply"
   ],
   "window": {
+    "backgroundColor": "#dddddd",
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
+    "navigationBarBackgroundColor": "#ffffff",
     "navigationBarTitleText": "爱云保",
     "navigationBarTextStyle": "black"
   }

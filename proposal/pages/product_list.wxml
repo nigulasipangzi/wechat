@@ -3,7 +3,7 @@
     <view class="search">
       <image src="./images/zoom.png"/>
       <input bindfocus="showCondition" bindblur="hideCondition" value="{{ vendor == null ? search : vendors[vendor] }}"></input>
-      <image src="./images/stop.png" bindtap="clear"/>
+      <image src="./images/del.png" bindtap="clear"/>
     </view>
   </view>
   <block wx:if="{{focus && search == ''}}">

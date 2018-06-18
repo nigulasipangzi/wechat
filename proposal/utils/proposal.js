@@ -2,8 +2,8 @@ class Proposal {
   constructor(host) {
     this.host = host
   }
-  query(onSucc) {
-    this.host.req('/proposal/list.json', null, r => {
+  query(from, num, onSucc) {
+    this.host.req('/proposal/list.json', { from: from, num: num }, r => {
       onSucc(r)
     })
   }
@@ -17,8 +17,18 @@ class Proposal {
       onSucc(r)
     })
   }
+  favourite(proposalId, fav, onSucc) {
+    this.host.req('/proposal/favourite.json', { proposalId: proposalId, favourite: fav }, r => {
+      onSucc(r)
+    })
+  }
   createPlan(proposalId, insurant, onSucc) {
     this.host.req('/proposal/create_plan.json', { proposalId: proposalId, insurant: insurant }, r => {
+      onSucc(r)
+    })
+  }
+  deletePlan(proposalId, planId, onSucc) {
+    this.host.req('/proposal/delete_plan.json', { proposalId: proposalId, planId: planId }, r => {
       onSucc(r)
     })
   }

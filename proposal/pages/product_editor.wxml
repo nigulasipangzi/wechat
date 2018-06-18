@@ -1,36 +1,34 @@
-<view class="popwin" hidden="{{!visible}}">
-  <view style="margin-top:{{y}}px; max-height:100%; min-height:100%; background-color:#ddd;" animation="{{ani}}">
-    <view class="div" wx:for="{{form}}" wx:for-item="w" wx:for-index="i" wx:key="{{i}}">
-      <view wx:if="{{ i == 0 }}" style="height:80rpx; line-height:80rpx; text-align:center; border-bottom: #ddd solid 1px; background-color:#fff;">
-        <text class="text18">{{w.name}}</text>
+<view>
+  <view class="div" wx:for="{{form}}" wx:for-item="w" wx:for-index="i" wx:key="{{i}}">
+    <view wx:if="{{ i == 1 }}" class="test17 tc-dark center lh-60 mt-1" style="">
+      - 可选择的附加险 -
+    </view>
+    <view wx:if="{{ i > 0 }}" class="divx mt-1 bg-white middle bt-bl" style="height:80rpx;" bindtap="addRider" data-i="{{i}}" data-v="{{w}}">
+      <image style="margin:10rpx 0 0 20rpx; width:60rpx; height:60rpx;" src="./images/{{ w.form == null ? 'unchecked' : 'checked' }}.png"/>
+      <text class="text16" style="margin-left:10rpx; line-height:80rpx; color:{{ w.form == null ? 'gray' : 'black' }};">{{w.name}}</text>
+    </view>
+    <view wx:for="{{w.form}}" wx:for-item="v" wx:for-index="j" wx:key="unique" class="divx p-1 lh-60 bg-white br-tl">
+      <view style="width:300rpx; margin:10rpx 0 0 20rpx;">
+        <text class="text17">{{v.text}}</text>
       </view>
-      <view wx:if="{{ i > 0 }}" class="divx" style="height:80rpx; vertical-align:middle; border-bottom: #ddd solid 1px; background-color:#fff; margin-top:10rpx;" bindtap="addRider" data-i="{{i}}" data-v="{{w}}">
-        <image style="margin:10rpx 0 0 20rpx; width:60rpx; height:60rpx;" src="./images/{{ w.form == null ? 'unchecked' : 'checked' }}.png"/>
-        <text class="text16" style="margin-left:10rpx; line-height:80rpx; color:{{ w.form == null ? 'gray' : 'black' }};">{{w.name}}</text>
-      </view>
-      <view wx:for="{{w.form}}" wx:for-item="v" wx:for-index="j" wx:key="unique" class="form-line" style="background-color:#fff;">
-        <view style="width:300rpx; margin:10rpx 0 0 20rpx;">
-          <text class="text17">{{v.text}}</text>
-        </view>
-        <view style="width:410rpx; margin:10rpx 20rpx 0 0; text-align:right;">
-          <block wx:if="{{v.widget == 'number'}}">
-            <input type="number" placeholder="请输入{{v.text}}"/>
-          </block>
-          <block wx:elif="{{v.widget == 'switch' || v.widget == 'select'}}">
-            <picker mode="selector" range="{{v.options}}" value="{{v.index}}" bindchange="onChange" data-v="{{v}}" data-i="{{i}}" data-j="{{j}}">
-              <view style="display:flex">
-                <view style="width:350rpx; line-height:60rpx;">
-                  <text class="text17">{{v.options[v.index]}}</text>
-                </view>
-                <image style="width:60rpx; height:60rpx;" src="./images/arrow-7-down.png"/>
+      <view style="width:410rpx; margin:10rpx 20rpx 0 0; text-align:right;">
+        <block wx:if="{{v.widget == 'number'}}">
+          <input type="number" placeholder="请输入{{v.text}}"/>
+        </block>
+        <block wx:elif="{{v.widget == 'switch' || v.widget == 'select'}}">
+          <picker mode="selector" range="{{v.options}}" value="{{v.index}}" bindchange="onChange" data-v="{{v}}" data-i="{{i}}" data-j="{{j}}">
+            <view style="display:flex">
+              <view style="width:350rpx; line-height:60rpx;">
+                <text class="text17">{{v.options[v.index]}}</text>
               </view>
-            </picker>
-          </block>
-          <block wx:else>
-          </block>
-        </view>
+              <image style="width:60rpx; height:60rpx;" src="./images/arrow-7-down.png"/>
+            </view>
+          </picker>
+        </block>
+        <block wx:else>
+        </block>
       </view>
     </view>
-    <button style="margin:20rpx 10rpx 20rpx 10rpx; line-height:80rpx; height:80rpx; color:#fff; background-color:#1aad19;" class="text18" bindtap="close">确定</button>
   </view>
+  <button class="btn-fl text18 ml-2 mr-2 mt-2" bindtap="back">返回</button>
 </view>

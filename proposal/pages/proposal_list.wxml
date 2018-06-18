@@ -1,30 +1,33 @@
 <view>
-  <view wx:for="{{list}}" wx:key="unique" wx:for-item="v" class="list-item" data-v="{{v}}" bindtap="edit">
+  <view wx:for="{{list}}" wx:key="{{v.id}}" wx:for-index="i" wx:for-item="v" class="list-item" data-v="{{v}}" bindtap="edit">
     <view class="list-item-top">
       <view class="list-item-icon">
-        <image class="icon-lg" src="https://sv-uat.iyb.tm/images/logo/fosun1.jpg"></image>
+        <image class="icon-lg" src="./images/proposal.png"></image>
       </view>
       <view class="list-item-content">
         <view style="height:60rpx; display:flex">
           <view style="width:500rpx">
-            <text class="list-item-title text20">{{v.name == null ? "我的建议书" : v.name}}</text>
+            <text class="text20">{{v.name == null ? "我的建议书" : v.name}}</text>
           </view>
         </view>
         <view style="height:40rpx">
-          <text class="list-item-text text16">{{v.updateTime}}</text>
+          <text class="text17 tc-dark">{{v.remark == null ? (v.tag == "single" ? "单人计划" : "多人计划") : v.remark }}</text>
         </view>
       </view>
-      <view style="width:80rpx">
-        <image class="icon-md" src="./images/arrow-7-right.png"></image>
+      <view class="ml-auto" style="width:80rpx; height:80rpx;" catchtap="favourite" data-v="{{v}}" data-i="{{i}}">
+        <image class="icon-sm" src="{{v.favourite?'./images/star.png':'./images/graystar.png'}}"></image>
       </view>
     </view>
-    <view class="list-item-btm">
-      <view style="width:120rpx; text-align:left; margin:0 auto 0 0;">
-        <image class="icon-sm" src="./images/stop.png"></image>
+    <view class="list-item-btm" style="line-height:80rpx;">
+      <view class="ml-1 mr-auto" style="width:400rpx; text-align:left;">
+        <text class="text17">{{v.updateTime}}</text>
       </view>
-      <view style="width:630rpx; text-align:right;">
-        <text class="list-item-text text16">保费：{{v.premium}}元</text>
+      <view class="mr-1" style="width:300rpx; text-align:right;">
+        <text class=" text17">{{v.premium}}元</text>
       </view>
     </view>
+  </view>
+  <view class="test17 tc-dark" style="text-align:center; line-height:80rpx;">
+    - {{ list == null || current < list.length ? "向下滑动加载更多" : "没有更多了" }} -
   </view>
 </view>
