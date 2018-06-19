@@ -72,9 +72,31 @@ Page({
     })
   },
   deletePlan(e) {
-    APP.proposal.deletePlan(this.data.proposal.proposalId, this.data.proposal.detail[e.currentTarget.dataset.i], r => {
-      this.setData({ proposal: r, index: 0 }, this.onProposal)
-    })
+    if (this.data.proposal.detail.length <= 1) {
+      wx.showModal({
+        title: '警告',
+        content: '至少需有一个计划，将它清空吗？',
+        success: res => {
+          if (res.confirm) {
+            APP.proposal.clearPlan(this.data.proposal.detail[this.data.index], r => {
+              this.onProposal()
+            })
+          }
+        }
+      })
+    } else {
+      wx.showModal({
+        title: '警告',
+        content: '确认删除该计划及其所有产品吗？',
+        success: res => {
+          if (res.confirm) {
+            APP.proposal.deletePlan(this.data.proposal.proposalId, this.data.proposal.detail[this.data.index], r => {
+              this.setData({ proposal: r, index: 0 }, this.onProposal)
+            })
+          }
+        }
+      })
+    }
   },
   addProduct() {
     wx.navigateTo({ url: './product_list' })

@@ -23,21 +23,16 @@ Page({
         this.setData({ planId: options.planId, index: options.index, form: this.data.form })
 
         APP.proposal.listRiders(options.planId, options.index, r2 => {
-          r2.map(v => {
-            let prdForm = {
-              name: v.name,
-              productId: v.code,
-              form: null
-            }
+          r2.map((v, j) => {
+            this.data.form.push({ name: v.name, productId: v.code })
             plan.product.map((r3, i) => {
               if (r3.productId == v.code && r3.parent == options.index) {
                 APP.proposal.editProduct(options.planId, i, r4 => {
-                  prdForm.form = this.formOf(r4.factors)
+                  this.data.form[j+1].form = this.formOf(r4.factors)
                   this.setData({ form: this.data.form })
                 })
               }
             })
-            this.data.form.push(prdForm)
           })
           this.setData({ form: this.data.form })
         })

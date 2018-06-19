@@ -75,7 +75,7 @@
     <view class="divx" style="padding:10rpx;">
       <view class="div" style="margin:10rpx;">
         <image style="width:240rpx; height:320rpx;" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1528960595017&di=f6df1b19342c3b3685448230a16f32f0&imgtype=0&src=http%3A%2F%2Fpic-cdn.35pic.com%2F58pic%2F17%2F19%2F43%2F25U58PICWXJ_1024.jpg"/>
-        <view class="text14" style="text-align:center;">传统专业</view>
+        <view class="text14" style="text-align:center;">传统打印版</view>
         <!-- <view class="text12" style="line-height:40rpx;">
           <view style="color:#09bb07;">● A4规格PDF</view>
           <view style="color:#09bb07;">● 可下载打印</view>
@@ -88,11 +88,11 @@
       </view>
       <view class="div" style="margin:10rpx;">
         <image style="width:240rpx; height:320rpx;" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1528960595017&di=f6df1b19342c3b3685448230a16f32f0&imgtype=0&src=http%3A%2F%2Fpic-cdn.35pic.com%2F58pic%2F17%2F19%2F43%2F25U58PICWXJ_1024.jpg"/>
-        <view class="text14" style="text-align:center;">精简通俗</view>
+        <view class="text14" style="text-align:center;">精简通俗版</view>
       </view>
       <view class="div" style="margin:10rpx;">
         <image style="width:240rpx; height:320rpx;" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1528960595017&di=f6df1b19342c3b3685448230a16f32f0&imgtype=0&src=http%3A%2F%2Fpic-cdn.35pic.com%2F58pic%2F17%2F19%2F43%2F25U58PICWXJ_1024.jpg"/>
-        <view class="text14" style="text-align:center;">时尚专业</view>
+        <view class="text14" style="text-align:center;">时尚专业版</view>
       </view>
     </view>
   </view>

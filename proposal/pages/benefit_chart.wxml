@@ -1,5 +1,5 @@
-<view class="text13" style="background-color:#fff; text-align:center;">
-  <view class="eclipse" style="width:690rpx; text-align:center; margin-left:30rpx; height:80rpx; line-height:80rpx; border-bottom:#ddd solid 1px;">
+<view class="text13 bg-white center">
+  <view class="eclipse center br-bl lh-60 ml-3 mr-3 pt-1 pb-1" style="width:690rpx;">
     <text class="text18">{{productName}}</text>
   </view>
   <canvas canvas-id="chart071" style="width:750rpx; height:550rpx;" bindtouchstart="onTouch" bindtouchmove="onTouch"></canvas>

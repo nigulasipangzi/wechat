@@ -32,6 +32,11 @@ class Proposal {
       onSucc(r)
     })
   }
+  clearPlan(proposalId, planId, onSucc) {
+    this.host.req('/proposal/clear_plan.json', { proposalId: proposalId, planId: planId }, r => {
+      onSucc(r)
+    })
+  }
   load(proposalId, onSucc) {
     this.host.req('/proposal/load.json', { proposalId: proposalId }, r => {
       onSucc(r)

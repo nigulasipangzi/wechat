@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    mode: 0,
+    mode: 1,
     tabs: ["保障项目", "利益图表", "责任条款"]
   },
 
@@ -15,7 +15,7 @@ Page({
    */
   onLoad: function (options) {
     APP.proposal.format(options.planId, "coverage,chart", r => {
-      this.setData({ coverage: r.coverage ? r.coverage : null, chart: r.chart ? r.chart : null })
+      this.setData({ coverage: r.coverage ? r.coverage : null, chart: r.chart ? r.chart : null }, this.onRepaint)
     })
   },
 

@@ -46,7 +46,7 @@
 .bottom {
   width: 100%;
   display: flex;
-  border-top: #ddd solid 1px;
+  border-top: #dddddd solid 1px;
   height: 100rpx;
   position: fixed;
   left: 0;
@@ -58,10 +58,8 @@
 .btn-img {
   width: 100rpx;
   height: 100rpx;
-  border-right: #dddddd solid 1px;
   line-height: 20rpx;
   text-align: center;
-  background-color: #fff;
 }
 
 .btn-sky {

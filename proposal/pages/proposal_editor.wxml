@@ -1,8 +1,7 @@
 <view>
   <view style="display:flex; position:fixed; z-index:1; top:0;">
     <view class="divx text18 center tab {{ i == index ? 'tab-focus' : 'tab-blur' }}" wx:key="{{i}}" style="width:250rpx;" wx:for="{{proposal.detail}}" wx:for-index="i" bindtap="onPlanSwitch" data-i="{{i}}">
-      <image wx:if="{{ i == index }}" class="btn-sm ml-auto" src="./images/del.png" catchtap="deletePlan" data-i="{{i}}"/>
-      <view class="{{ i == index ? '' : 'ml-auto'}} mr-auto">被保险人{{ i + 1 }}</view>
+      <view class="ml-auto mr-auto">被保险人{{ i + 1 }}</view>
     </view>
     <view wx:if="{{ proposal.detail.length < 3 }}" class="tab tab-blur" wx:key="{{i}}" style="width:{{750-250*proposal.detail.length}}rpx; text-align:right;" bindtap="createPlan">
       <image class="btn-sm mr-1" src="./images/add.png"/>
@@ -72,17 +71,24 @@
     <view wx:if="{{plan.product && plan.product.length > 0}}" class="card-content-line" style="padding:0 20rpx 0 20rpx; display:block; margin-top:10rpx; text-align:right; color:#09bb07;">
       <text class="text16">合计：{{plan.premium}}元</text>
     </view>
-    <button class="btn-fl text18 ml-2 mr-2 mt-2" bindtap="addProduct">添加险种</button>
+    <view class="divx text18 ml-2 mr-2 mt-2">
+      <view class="div bg-second center" style="width:90rpx; height:80rpx; border-radius:10rpx 0 0 10rpx;">
+      </view>
+      <view class="bg-second center tc-white" style="width:530rpx; height:80rpx; border-radius:0; border-left:1px solid #dddddd; border-right:1px solid #dddddd;" catchtap="addProduct">添加险种</view>
+      <view class="div bg-second center" style="width:90rpx; height:80rpx; border-radius:0 10rpx 10rpx 0;" catchtap="deletePlan">
+        <image class="ml-auto mr-auto" style="width:50rpx; height:50rpx; margin-top:15rpx;" src="./images/trash.png"/>
+      </view>
+    </view>
   </view>
 </view>
 <view style="height:120rpx"></view>
 <view class="bottom">
-  <view class="btn-img" bindtap="openProposalList">
+  <view class="btn-img bg-white" bindtap="openProposalList">
     <image src="./images/documents.png"></image>
     <text>历史</text>
   </view>
   <view class="divx" style="width:450rpx;">
-    <view style="width:390rpx; padding:6rpx 20rpx 6rpx 20rpx; line-height:44rpx; margin:0;">
+    <view style="width:100%; padding:6rpx 20rpx 6rpx 20rpx; line-height:44rpx;">
       <view>
         <text class="text16" style="color:#fff">首年保费：{{plan.premium}}元</text>
       </view>
@@ -90,15 +96,12 @@
         <text class="text16" style="color:#fff">点击查看年度保费明细</text>
       </view>
     </view>
-    <view style="width:60rpx; height:100rpx;">
-      <image style="width:60rpx; height:60rpx; margin-top:20rpx;" src="./images/arrow-4-up.png"></image>
-    </view>
   </view>
-  <view class="btn-img" bindtap="showBenefit">
-    <image src="./images/md-levels-alt.png"></image>
+  <view class="btn-img tc-white" bindtap="showBenefit">
+    <image src="./images/md-levels-alt.png" style="filter:invert(100%)"></image>
     <text>利益</text>
   </view>
-  <view class="btn-img" bindtap="next">
+  <view class="btn-img bg-white ml-auto" bindtap="next">
     <image src="./images/print.png"></image>
     <text>生成</text>
   </view>

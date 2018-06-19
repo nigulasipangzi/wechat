@@ -84,7 +84,7 @@ Page({
   del() {
     wx.showModal({
       title: '警告',
-      content: '确认删除吗',
+      content: '确认删除该建议书吗',
       success(res) {
         if (res.confirm)
           APP.proposal.delete(e.currentTarget.dataset.v.id)

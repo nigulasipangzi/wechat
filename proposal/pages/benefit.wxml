@@ -1,12 +1,12 @@
 <view style="">
-  <view style="display:flex; position:fixed; top:0; background-color:#e6e6e6; z-index:100;">
+  <view style="display:flex; position:fixed; top:0; z-index:100;">
     <view class="text18 tab {{ i == mode ? 'tab-focus' : 'tab-blur' }}" style="width:250rpx;" wx:key="unique" wx:for="{{tabs}}" wx:for-item="v" wx:for-index="i" bindtap="onModeSwitch" data-i="{{i}}"> 
       {{v}}
     </view>
   </view>
   <view wx:if="{{ mode == 2 }}" style="display:flex; flex-direction:column; margin-top:80rpx;">
-    <view class="" style="margin-top:{{i!=0?10:0}}rpx; padding:0 20rpx 0 20rpx; background:#fff;" wx:for="{{coverage}}" wx:for-item="v" wx:for-index="i"> 
-      <view class="eclipse" style="width:690rpx; text-align:center; padding:10rpx; line-height:60rpx; border-bottom:#ddd solid 1px;">
+    <view class="bg-white" style="margin-top:{{i!=0?10:0}}rpx; padding:0 20rpx 0 20rpx;" wx:for="{{coverage}}" wx:for-item="v" wx:for-index="i"> 
+      <view class="eclipse center br-bl lh-60 p-1" style="width:690rpx;">
         <text class="text18">{{v.productName}}</text>
       </view>
       <view class="" style="" wx:for="{{v.content}}" wx:for-item="x" wx:for-index="j"> 
@@ -20,9 +20,9 @@
     </view>
   </view>
   <view wx:if="{{ mode == 1 }}" style="display:flex; flex-direction:column; margin-top:80rpx;">
-    <view style="display:flex; flex-direction:column;" wx:for="{{chart}}" wx:for-item="v" wx:for-index="i" wx:key="unique" wx:if="{{ v.content != null }}">
+    <view style="display:flex; flex-direction:column;" wx:for="{{chart}}" wx:for-item="v" wx:for-index="i" wx:key="{{i}}" wx:if="{{ v.content != null }}">
       <BenefitChart id="benefitChart{{i}}" chart="{{v}}"/> 
-      <view style="height:10rpx; background-color:#e6e6e6;"/>
+      <view style="height:10rpx;"/>
     </view>
   </view>
 </view>
