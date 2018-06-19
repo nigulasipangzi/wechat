@@ -97,7 +97,7 @@ Page({
     let opt = e.currentTarget.dataset.v;
     let index = e.currentTarget.dataset.i
     let vals = {};
-    vals[opt.name] = opt.vals[Number(e.detail.value)]
+    vals[opt.name] = opt.vals ? opt.vals[Number(e.detail.value)] : Number(e.detail.value)
     APP.proposal.saveProduct(this.data.planId, index, vals, r => {
       this.data.form[index].form[e.currentTarget.dataset.j].index = e.detail.value
       this.setData({ form: this.data.form })

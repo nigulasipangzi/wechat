@@ -13,7 +13,7 @@
       </view>
       <view style="width:410rpx; margin:10rpx 20rpx 0 0; text-align:right;">
         <block wx:if="{{v.widget == 'number'}}">
-          <input type="number" placeholder="请输入{{v.text}}"/>
+          <input type="number" placeholder="请输入{{v.text}}" bindchange="onChange" data-v="{{v}}" data-i="{{i}}" data-j="{{j}}"/>
         </block>
         <block wx:elif="{{v.widget == 'switch' || v.widget == 'select'}}">
           <picker mode="selector" range="{{v.options}}" value="{{v.index}}" bindchange="onChange" data-v="{{v}}" data-i="{{i}}" data-j="{{j}}">

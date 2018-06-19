@@ -27,7 +27,7 @@
         </view>
         <view class="list-item-content">
           <view class="text18" style="height:45rpx; line-height:45rpx;">{{v.name}}</view>
-          <view class="text12" style="height:35rpx; line-height:35rpx; color:gray;">{{v.name}}</view>
+          <view class="text14 eclipse" style="width:610rpx; height:35rpx; line-height:35rpx; color:gray;">{{v.remark == null ? "暂无简介" : v.remark}}</view>
         </view>
       </view>
     </view>
