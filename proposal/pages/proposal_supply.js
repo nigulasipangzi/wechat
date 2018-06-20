@@ -6,8 +6,13 @@ Page({
    */
   data: {
     proposal: {
-      plans: ["1","2","3"]
+      plans: ["1","2","3"],
+      style: {}
     }
+  },
+
+  formSubmit(e) {
+    console.log(e.detail.value)
   },
 
   /**

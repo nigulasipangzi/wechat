@@ -97,9 +97,13 @@ Page({
     let opt = e.currentTarget.dataset.v;
     let index = e.currentTarget.dataset.i
     let vals = {};
-    vals[opt.name] = opt.vals ? opt.vals[Number(e.detail.value)] : Number(e.detail.value)
+    let x = Number(e.detail.value);
+    vals[opt.name] = opt.vals ? opt.vals[x] : x
     APP.proposal.saveProduct(this.data.planId, index, vals, r => {
-      this.data.form[index].form[e.currentTarget.dataset.j].index = e.detail.value
+      if (opt.vals)
+        this.data.form[index].form[e.currentTarget.dataset.j].index = x
+      else
+        this.data.form[index].form[e.currentTarget.dataset.j].value = x
       this.setData({ form: this.data.form })
     })
   },
@@ -116,6 +120,7 @@ Page({
         widget: v.widget,
         name: v.name,
         text: v.label,
+        value: v.value,
         index: index,
         vals: vals,
         options: options

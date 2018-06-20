@@ -24,7 +24,7 @@ App({
           if (res.data.result == "success") {
             onSucc(res.data.content)
           } else if (onFail) {
-            onFail(res.reason)
+            onFail(res.data.reason)
           }
         }
       })

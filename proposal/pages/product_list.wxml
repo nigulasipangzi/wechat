@@ -1,4 +1,4 @@
-<view class="popwin">
+<view>
   <view class="console" style="position:fixed; top:0; left:0;">
     <view class="search">
       <image src="./images/zoom.png"/>
@@ -21,14 +21,15 @@
       <view wx:for="{{sorts}}" wx:key="unique" wx:for-item="v" wx:for-index="i" class="text18 tab {{i == sort ? 'tab-focus' : 'tab-blur'}}" style="width:120rpx;" bindtap="onQuerySort" data-i="{{i}}">{{v}}</view>
     </view>
     <view style="margin-top:180rpx;">
-      <view wx:for="{{list}}" wx:key="unique" wx:for-item="v" class="list-item" bindtap="addToPlan" data-v="{{v}}">
+      <view wx:for="{{list}}" wx:key="unique" wx:for-item="v" class="list-item bg-white" bindtap="addToPlan" data-v="{{v}}">
         <view class="list-item-icon">
           <image src="{{v.icon}}"></image>
         </view>
         <view class="list-item-content">
           <view class="text18" style="height:45rpx; line-height:45rpx;">{{v.name}}</view>
-          <view class="text14 eclipse" style="width:610rpx; height:35rpx; line-height:35rpx; color:gray;">{{v.remark == null ? "暂无简介" : v.remark}}</view>
+          <view class="text14 eclipse" style="width:560rpx; height:35rpx; line-height:35rpx; color:gray;">{{v.remark == null ? "暂无简介" : v.remark}}</view>
         </view>
+        <image wx:if="{{v.tag!=null}}" class="ml-auto mr-0" style="width:80rpx; height:80rpx;" src="./images/{{v.tag}}.png"></image>
       </view>
     </view>
   </block>

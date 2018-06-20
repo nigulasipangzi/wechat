@@ -113,7 +113,11 @@ Page({
     wx.navigateTo({ url: './proposal_list' })
   },
   next() {
-    wx.navigateTo({ url: './proposal_supply?proposalId=' + this.data.proposal.proposalId })
+    APP.proposal.save(this.data.proposal.proposalId, r => {
+      wx.navigateTo({ url: './proposal_supply?proposalId=' + this.data.proposal.proposalId })
+    }, r => {
+      wx.showToast({ icon: 'none', title: r })
+    })
   },
   showBenefit() {
     if (this.data.plan.product == null || this.data.plan.product.length == 0)

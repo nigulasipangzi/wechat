@@ -38,8 +38,12 @@ Page({
   },
 
   query() {
-    let r = APP.proposal.queryProduct(this.data.sort, this.data.vendor, this.data.search, (r) => {
-      this.setData({ list: r })
+    let r = APP.proposal.queryProduct(this.data.sort, this.data.vendor, this.data.search, r => {
+      let list = r.map(v => {
+        v.tag = v.tag == null || v.tag.length == 0 ? null : v.tag[0]
+        return v
+      })
+      this.setData({ list: list })
     })
   },
 
