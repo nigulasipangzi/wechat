@@ -99,7 +99,7 @@ Page({
     }
   },
   addProduct() {
-    wx.navigateTo({ url: './product_list' })
+    wx.navigateTo({ url: './product_list?planId=' + this.data.plan.planId })
   },
   editProduct(e) {
     wx.navigateTo({ url: './product_editor?planId=' + this.data.plan.planId + "&index=" + e.currentTarget.dataset.i })

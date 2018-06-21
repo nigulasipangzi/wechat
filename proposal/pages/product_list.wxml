@@ -21,7 +21,7 @@
       <view wx:for="{{sorts}}" wx:key="unique" wx:for-item="v" wx:for-index="i" class="text18 tab {{i == sort ? 'tab-focus' : 'tab-blur'}}" style="width:120rpx;" bindtap="onQuerySort" data-i="{{i}}">{{v}}</view>
     </view>
     <view style="margin-top:180rpx;">
-      <view wx:for="{{list}}" wx:key="unique" wx:for-item="v" class="list-item bg-white" bindtap="addToPlan" data-v="{{v}}">
+      <view wx:for="{{list}}" wx:key="unique" wx:for-item="v" wx:for-index="i" class="list-item bg-white" bindtap="addToPlan" data-i="{{i}}" style="{{v.rule==null?'':'opacity:0.4'}}">
         <view class="list-item-icon">
           <image src="{{v.icon}}"></image>
         </view>

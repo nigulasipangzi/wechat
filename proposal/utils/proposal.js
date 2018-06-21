@@ -5,8 +5,8 @@ class Proposal {
   query(from, num, onSucc) {
     this.host.req('/proposal/list.json', { from: from, num: num }, r => onSucc(r))
   }
-  queryProduct(tag, vendor, text, onSucc) {
-    this.host.req('/proposal/query_clause.json', { tag: tag, company: vendor, text: text == "" ? null : text }, r => onSucc(r))
+  queryProduct(planId, tag, vendor, text, onSucc) {
+    this.host.req('/proposal/query_clause.json', { planId: planId, tag: tag, company: vendor, text: text == "" ? null : text }, r => onSucc(r))
   }
   create(applicant, insurant, onSucc) {
     this.host.req('/proposal/create.json', { applicant: applicant, insurant: insurant }, r => onSucc(r))

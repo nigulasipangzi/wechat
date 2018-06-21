@@ -1,5 +1,3 @@
-@import "./css/common.wxss";
-
 .list-item {
   height: 200rpx;
   background-color: #fff;

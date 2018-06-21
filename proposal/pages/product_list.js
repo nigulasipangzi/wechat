@@ -18,7 +18,7 @@ Page({
    */
   onLoad: function (options) {
     wx.setNavigationBarTitle({ title: "选择产品" })
-    this.query()
+    this.query(options.planId)
   },
 
   onQuerySort(e) {
@@ -37,8 +37,8 @@ Page({
     this.setData({ sort:"hot", vendor:null, search:"" }, () => { this.query() })
   },
 
-  query() {
-    let r = APP.proposal.queryProduct(this.data.sort, this.data.vendor, this.data.search, r => {
+  query(planId) {
+    let r = APP.proposal.queryProduct(planId, this.data.sort, this.data.vendor, this.data.search, r => {
       let list = r.map(v => {
         v.tag = v.tag == null || v.tag.length == 0 ? null : v.tag[0]
         return v
@@ -105,6 +105,20 @@ Page({
   },
 
   addToPlan: function (e) {
-    APP.navigateBack({ productId: e.currentTarget.dataset.v.code })
+    let i = e.currentTarget.dataset.i;
+    let prd = this.data.list[i];
+    if (prd.rule) {
+      wx.showModal({
+        title: '提示',
+        content: '当前客户信息（年龄、性别等）下，该产品并不适用，仍要添加吗？',
+        success: res => {
+          if (res.confirm) {
+            APP.navigateBack({ productId: prd.code })
+          }
+        }
+      })
+    } else {
+      APP.navigateBack({ productId: prd.code })
+    }
   }
 })

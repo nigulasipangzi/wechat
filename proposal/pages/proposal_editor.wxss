@@ -1,5 +1,3 @@
-@import "./css/common.wxss";
-
 .card-title {
   height: 48rpx;
   padding: 6rpx 10rpx 6rpx 20rpx;
