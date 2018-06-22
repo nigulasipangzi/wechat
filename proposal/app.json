@@ -6,7 +6,8 @@
     "pages/proposal_list",
     "pages/proposal_editor",
     "pages/benefit",
-    "pages/proposal_supply"
+    "pages/proposal_supply",
+    "pages/preview"
   ],
   "window": {
     "backgroundColor": "#dddddd",

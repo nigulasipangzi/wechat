@@ -1,0 +1,14 @@
+<web-view src="http://www.baidu.com"></web-view>
+<cover-view class="bottom">
+  <cover-view class="divx" style="width:450rpx;">
+    <cover-view style="width:100%; padding:6rpx 20rpx 6rpx 20rpx; line-height:44rpx;">
+      <cover-view>
+        首年保费：元
+      </cover-view>
+      <cover-view>
+        点击查看年度保费明细
+      </cover-view>
+    </cover-view>
+  </cover-view>
+</cover-view>
+

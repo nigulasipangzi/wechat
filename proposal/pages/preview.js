@@ -1,19 +1,11 @@
-// pages/proposal_supply.js
+// pages/preview.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    proposal: {
-      plans: ["1","2","3"],
-      style: {}
-    }
-  },
-
-  formSubmit(e) {
-    console.log(e.detail.value)
-    wx.navigateTo({ url: './preview' })
+  
   },
 
   /**
