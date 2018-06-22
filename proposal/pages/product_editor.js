@@ -18,7 +18,8 @@ Page({
         wx.setNavigationBarTitle({ title: r1.name })
         this.data.form.push({
           name: r1.name,
-          form: this.formOf(r1.factors)
+          form: this.formOf(r1.factors),
+          index: options.index
         })
         this.setData({ planId: options.planId, index: options.index, form: this.data.form })
 
@@ -28,7 +29,8 @@ Page({
             plan.product.map((r3, i) => {
               if (r3.productId == v.code && r3.parent == options.index) {
                 APP.proposal.editProduct(options.planId, i, r4 => {
-                  this.data.form[j+1].form = this.formOf(r4.factors)
+                  this.data.form[j + 1].form = this.formOf(r4.factors)
+                  this.data.form[j + 1].index = i
                   this.setData({ form: this.data.form })
                 })
               }
@@ -94,16 +96,17 @@ Page({
   },
 
   onChange(e) {
-    let opt = e.currentTarget.dataset.v;
-    let index = e.currentTarget.dataset.i
+    let opt = e.currentTarget.dataset.v
+    let prd = this.data.form[e.currentTarget.dataset.i]
+    let idx = e.currentTarget.dataset.j
     let vals = {};
     let x = Number(e.detail.value);
     vals[opt.name] = opt.vals ? opt.vals[x] : x
-    APP.proposal.saveProduct(this.data.planId, index, vals, r => {
+    APP.proposal.saveProduct(this.data.planId, prd.index, vals, r => {
       if (opt.vals)
-        this.data.form[index].form[e.currentTarget.dataset.j].index = x
+        prd.form[idx].index = x
       else
-        this.data.form[index].form[e.currentTarget.dataset.j].value = x
+        prd.form[idx].value = x
       this.setData({ form: this.data.form })
     })
   },

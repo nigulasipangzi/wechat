@@ -34,9 +34,9 @@
     </view>
   </view>
   <view class="card-content" style="margin-top:10rpx;">
-    <block wx:for="{{plan.product}}" wx:key="unique" wx:for-item="v" wx:for-index="i">
-      <view class="product product-main text16" style="margin-top:10rpx;" wx:if="{{v.parent == null}}" bindtap="editProduct" data-i="{{i}}">
-        <view class="pt-1" style="height:70rpx; display:flex;">
+    <view wx:for="{{plan.product}}" wx:key="unique" wx:for-item="v" wx:for-index="i" class="bg-white pt-1 pb-1" style="{{v.parent == null?'margin-top:10rpx;':'margin-top:1px'}}">
+      <view class="product product-main text16" wx:if="{{v.parent == null}}" bindtap="editProduct" data-i="{{i}}">
+        <view style="height:70rpx; display:flex;">
           <image style="width:60rpx; height:60rpx; margin: 0 10rpx 0 10rpx;" src="{{plan.icons[v.vendor]}}"></image>
           <view style="width:600rpx;">
             <text class="text20 eclipse">{{v.name}}</text>
@@ -53,9 +53,8 @@
             <text class="{{'tc-' + (v.premium == null?'red':'black')}}">{{v.premium == null ? "无法计算" : v.premium + "元"}}</text>
           </view>
         </view>
-        <view style="height:10rpx;"></view>
       </view>
-      <view class="product product-rider text16" wx:else>
+      <view class="product product-rider text16" wx:else bindtap="editProduct" data-i="{{v.parent}}">
         <view class="left">
           <text style="color:#0a0;">附</text>
         </view>
@@ -67,7 +66,10 @@
           <text style="color:#000">{{v.premium}}元</text>
         </view>
       </view>
-    </block>
+      <view wx:if="{{v.rule!=null}}" class="tc-red text12 ml-1 mr-1 pl-1 pr-1" style="line-height:32rpx; border:#f00 solid 1px; background-color:#ffaaaa;">
+        <view wx:for="{{v.rule}}" wx:for-item="w" wx:for-index="j">{{j+1}}、{{w}}</view>
+      </view>
+    </view>
     <view wx:if="{{plan.product && plan.product.length > 0}}" class="card-content-line" style="padding:0 20rpx 0 20rpx; display:block; margin-top:10rpx; text-align:right; color:#09bb07;">
       <text class="text16">合计：{{plan.premium}}元</text>
     </view>

@@ -89,14 +89,14 @@
 }
 
 .product-main {
-  height: 140rpx;
+  height: 130rpx;
   line-height: 60rpx;
 }
 
 .product-rider {
   display: flex;
-  height: 80rpx;
-  line-height: 80rpx;
+  height: 60rpx;
+  line-height: 60rpx;
 }
 
 .product .left {
