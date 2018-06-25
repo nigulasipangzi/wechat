@@ -4,7 +4,7 @@
       {{v}}
     </view>
   </view>
-  <view wx:if="{{ mode == 2 }}" style="display:flex; flex-direction:column; margin-top:80rpx;">
+  <view wx:if="{{ mode == 2 }}" class="div" style="margin-top:80rpx;">
     <view class="bg-white" style="margin-top:{{i!=0?10:0}}rpx; padding:0 20rpx 0 20rpx;" wx:for="{{coverage}}" wx:for-item="v" wx:for-index="i"> 
       <view class="eclipse center br-bl lh-60 p-1" style="width:690rpx;">
         <text class="text18">{{v.productName}}</text>
@@ -19,10 +19,29 @@
       <view style="height:10rpx;"></view>
     </view>
   </view>
-  <view wx:if="{{ mode == 1 }}" style="display:flex; flex-direction:column; margin-top:80rpx;">
+  <view wx:elif="{{ mode == 1 }}" class="div" style="margin-top:80rpx;">
     <view style="display:flex; flex-direction:column;" wx:for="{{chart}}" wx:for-item="v" wx:for-index="i" wx:key="{{i}}" wx:if="{{ v.content != null }}">
       <BenefitChart id="benefitChart{{i}}" chart="{{v}}"/> 
       <view style="height:10rpx;"/>
+    </view>
+  </view>
+  <view wx:else class="div" style="margin-top:80rpx;">
+    <view class="pl-2 pr-2 pb-1 bg-white br-bmb" wx:for="{{liability}}" wx:for-item="v" wx:for-index="i" wx:key="{{i}}" wx:if="{{ v.detail != null }}">
+      <view class="text18 h-80 lh-80 br-bl mb-1">{{v.name}}</view>
+      <view class="div text17 pb-1" wx:for="{{v.detail}}" wx:for-item="w" wx:for-index="j" wx:key="{{j}}">
+        <view class="lh-60">{{w.name}}</view>
+        <view class="lh-40" wx:for="{{w.detail}}" wx:for-item="x" wx:for-index="k" wx:key="{{k}}">
+          <view class="divx pb-1" bindtap="showLiabDetail" data-i="{{i}}" data-j="{{j}}" data-k="{{k}}">
+            <image style="width:40rpx;height:40rpx;" src="./images/arrow-7-up.png" wx:if="{{x.show}}"/>
+            <image style="width:40rpx;height:40rpx;" src="./images/arrow-7-down.png" wx:if="{{!x.show}}"/>
+            <view class="pl-1" style="width:650rpx;">{{x.text}}</view>
+          </view>
+          <view class="divx text16 tc-dark pb-1" wx:for="{{x.detail}}" wx:for-item="y" wx:if="{{ x.show && x.detail != null }}" wx:key="unique">
+            <view class="center" style="width:40rpx;"></view>
+            <view><text class="title">{{y.productAbbrName}}</text> {{y.text}}</view>
+          </view>
+        </view>
+      </view>
     </view>
   </view>
 </view>

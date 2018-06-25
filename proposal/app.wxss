@@ -65,6 +65,7 @@ page {
   line-height: 60rpx;
   box-sizing: border-box;
   padding-top: 10rpx;
+  background-color: #dddddd;
 }
 
 .tab-focus {
@@ -339,10 +340,26 @@ input {
   margin-bottom: 1px;
 }
 
+.br-bmb {
+  margin-bottom: 6rpx;
+}
+
 .lh-60 {
   line-height: 60rpx;
 }
 
+.lh-50 {
+  line-height: 50rpx;
+}
+
+.lh-40 {
+  line-height: 40rpx;
+}
+
 .lh-80 {
   line-height: 80rpx;
+}
+
+.h-80 {
+  height: 80rpx;
 }

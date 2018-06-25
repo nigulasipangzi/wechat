@@ -8,7 +8,7 @@
         <text class="text17">名称</text>
       </view>
       <view class="form-item-widget">
-        <input name="proposalName" type="text" style="text-align:right; margin-top:10rpx;" placeholder="建议书名称"/>
+        <input name="proposalName" type="text" style="text-align:right; margin-top:10rpx;" placeholder="请输入建议书名称"/>
       </view>
     </view>
     <view class="form-item bg-white">
@@ -16,7 +16,7 @@
         <text class="text17">备注</text>
       </view>
       <view class="form-item-widget">
-        <input name="proposalRemark" type="text" style="text-align:right; margin-top:10rpx;" placeholder="建议书备注，转发不显示"/>
+        <input name="proposalRemark" type="text" style="text-align:right; margin-top:10rpx;" placeholder="建议书备注（转发不显示）"/>
       </view>
     </view>
     <view class="div" style="padding:0 20rpx 0 20rpx; line-height:80rpx; height:80rpx;">
@@ -27,7 +27,7 @@
         <text class="text17">姓名</text>
       </view>
       <view class="form-item-widget">
-        <input name="applicantName" type="text" style="text-align:right; margin-top:10rpx;" placeholder="姓名"/>
+        <input name="applicantName" type="text" style="text-align:right; margin-top:10rpx;" placeholder="请输入姓名"/>
       </view>
     </view>
     <view class="form-item" style="background-color:#fff;">
@@ -61,7 +61,7 @@
         <text class="text17">姓名</text>
       </view>
       <view class="form-item-widget">
-        <input name="agentName" type="text" style="text-align:right; margin-top:10rpx;" placeholder="姓名"/>
+        <input name="agentName" type="text" style="text-align:right; margin-top:10rpx;" placeholder="请输入姓名"/>
       </view>
     </view>
     <view class="form-item" style="background-color:#fff;">
@@ -69,7 +69,7 @@
         <text class="text17">手机</text>
       </view>
       <view class="form-item-widget">
-        <input name="agentMobile" type="number" style="text-align:right; margin-top:10rpx;" placeholder="手机号码"/>
+        <input name="agentMobile" type="number" style="text-align:right; margin-top:10rpx;" placeholder="请输入手机号码"/>
       </view>
     </view>
     <view class="form-item" style="background-color:#fff;">
@@ -77,7 +77,7 @@
         <text class="text17">电子邮件</text>
       </view>
       <view class="form-item-widget">
-        <input name="agentEmail" type="text" style="text-align:right; margin-top:10rpx;" placeholder="电子邮箱地址"/>
+        <input name="agentEmail" type="text" style="text-align:right; margin-top:10rpx;" placeholder="请输入电子邮箱地址"/>
       </view>
     </view>
     <view class="form-item" style="background-color:#fff;">
@@ -85,7 +85,7 @@
         <text class="text17">所在机构</text>
       </view>
       <view class="form-item-widget">
-        <input name="agentCompany" type="text" style="text-align:right; margin-top:10rpx;" placeholder="公司名称"/>
+        <input name="agentCompany" type="text" style="text-align:right; margin-top:10rpx;" placeholder="请输入公司名称"/>
       </view>
     </view>
     <view class="div" style="padding:0 20rpx 0 20rpx; line-height:80rpx; height:80rpx;">
@@ -117,5 +117,6 @@
       </view>
     </view>
     <button class="btn-fl text18 m-2" form-type="submit">生成并保存</button>
+    <view class="p-1"></view>
   </form>
 </view>

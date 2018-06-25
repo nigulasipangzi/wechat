@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    mode: 1,
+    mode: 0,
     tabs: ["保障项目", "利益图表", "责任条款"]
   },
 
@@ -14,8 +14,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    APP.proposal.format(options.planId, "coverage,chart", r => {
-      this.setData({ coverage: r.coverage ? r.coverage : null, chart: r.chart ? r.chart : null }, this.onRepaint)
+    APP.proposal.format(options.planId, "coverage,chart,liab_graph", r => {
+      this.setData({ coverage: r.coverage ? r.coverage : null, chart: r.chart ? r.chart : null, liability: r.liab_graph ? r.liab_graph : null }, this.onRepaint)
     })
   },
 
@@ -66,6 +66,11 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+
+  showLiabDetail(e) {
+    this.data.liability[e.currentTarget.dataset.i].detail[e.currentTarget.dataset.j].detail[e.currentTarget.dataset.k].show = !this.data.liability[e.currentTarget.dataset.i].detail[e.currentTarget.dataset.j].detail[e.currentTarget.dataset.k].show
+    this.setData({ liability: this.data.liability })
   },
 
   onModeSwitch(e) {
